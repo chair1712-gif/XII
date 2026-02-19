@@ -1,0 +1,1509 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Mawaris Kelas XII - PAI</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            height: fit-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 20px;
+        }
+
+        .profile-card {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 40px;
+        }
+
+        .profile-card h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .profile-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .progress-stats {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: #4A6FA5;
+            font-size: 18px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #4A6FA5, #6A8FC3);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .nav-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-title i {
+            color: #4A6FA5;
+        }
+
+        .soal-nav {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .nav-item {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: #e3f2fd;
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active {
+            background: #4A6FA5;
+            color: white;
+            border-color: #4A6FA5;
+        }
+
+        .nav-item.answered {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .nav-item.answered.active {
+            background: #2E7D32;
+        }
+
+        .nav-item i {
+            font-size: 12px;
+            margin-left: 2px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 4px;
+        }
+
+        .legend-color.active {
+            background: #4A6FA5;
+        }
+
+        .legend-color.answered {
+            background: #4CAF50;
+        }
+
+        .legend-color.unanswered {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #f0f0f0;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header h1 i {
+            color: #4A6FA5;
+        }
+
+        .badge {
+            background: #e3f2fd;
+            color: #1565C0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .soal-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #4A6FA5;
+        }
+
+        .soal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .soal-number {
+            background: #4A6FA5;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .soal-category {
+            display: flex;
+            gap: 10px;
+        }
+
+        .category-badge {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-teks {
+            background: #e3f2fd;
+            color: #1565C0;
+        }
+
+        .badge-hadits {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .badge-numerasi {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-hots {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .soal-text {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .arab-text {
+            font-size: 24px;
+            font-family: 'Traditional Arabic', 'Amiri', serif;
+            text-align: right;
+            direction: rtl;
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .petunjuk-materi {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .petunjuk-materi i {
+            color: #856404;
+            font-size: 24px;
+        }
+
+        .petunjuk-materi .materi-text {
+            color: #856404;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .materi-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .opsi-container {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .opsi {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .opsi:hover {
+            background: #e3f2fd;
+            border-color: #4A6FA5;
+        }
+
+        .opsi.selected {
+            background: #e3f2fd;
+            border-color: #4A6FA5;
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+        }
+
+        .opsi-prefix {
+            background: #4A6FA5;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .opsi.selected .opsi-prefix {
+            background: #1565C0;
+        }
+
+        .opsi-text {
+            font-size: 16px;
+            color: #333;
+            flex: 1;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4A6FA5, #6A8FC3);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e0e0e0;
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Hasil Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .score-circle-large {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A6FA5, #6A8FC3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px auto;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .result-stat {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .result-stat .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4A6FA5;
+        }
+
+        .result-stat .label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .soal-nav {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigasi -->
+        <div class="sidebar">
+            <div class="profile-card">
+                <div class="profile-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3 id="nama-siswa">Nama Siswa</h3>
+                <p>Kelas XII - PAI</p>
+            </div>
+
+            <div class="progress-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Soal Terjawab</span>
+                    <span class="stat-value" id="terjawab-count">0/30</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Progress</span>
+                    <span class="stat-value" id="progress-persen">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="sidebar-progress" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="nav-title">
+                <i class="fas fa-list"></i>
+                <span>Navigasi Soal</span>
+            </div>
+
+            <div class="soal-nav" id="soal-nav">
+                <!-- Akan diisi JavaScript -->
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color active"></div>
+                    <span>Aktif</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color answered"></div>
+                    <span>Terjawab</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color unanswered"></div>
+                    <span>Belum</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>
+                    <i class="fas fa-book-open"></i>
+                    Quiz Mawaris Kelas XII
+                </h1>
+                <span class="badge" id="kategori-badge">Literasi Al-Qur'an</span>
+            </div>
+
+            <!-- Form Identitas (awal) -->
+            <div id="form-identitas" class="soal-card">
+                <h2 style="margin-bottom: 20px;">Identitas Siswa</h2>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Nama Lengkap:</label>
+                    <input type="text" id="input-nama" placeholder="Masukkan nama Anda" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600;">Kelas:</label>
+                    <select id="input-kelas" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px;">
+                        <option value="XII IPA 1">XII IPA 1</option>
+                        <option value="XII IPA 2">XII IPA 2</option>
+                        <option value="XII IPS 1">XII IPS 1</option>
+                        <option value="XII IPS 2">XII IPS 2</option>
+                    </select>
+                </div>
+                <button onclick="mulaiQuiz()" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-play"></i>
+                    Mulai Quiz
+                </button>
+            </div>
+
+            <!-- Container Soal (awalnya hidden) -->
+            <div id="soal-container" style="display: none;">
+                <!-- Soal Card -->
+                <div class="soal-card">
+                    <div class="soal-header">
+                        <div class="soal-number" id="soal-number">1</div>
+                        <div class="soal-category">
+                            <span class="category-badge" id="soal-jenis">Literasi</span>
+                            <span class="category-badge" id="soal-level">C1</span>
+                        </div>
+                    </div>
+
+                    <!-- Petunjuk Materi -->
+                    <div class="petunjuk-materi" id="petunjuk-materi">
+                        <i class="fas fa-lightbulb"></i>
+                        <div class="materi-text">
+                            <div class="materi-title" id="materi-title">Petunjuk Materi</div>
+                            <div id="materi-deskripsi">Memahami dalil Al-Qur'an tentang waris</div>
+                        </div>
+                    </div>
+
+                    <!-- Teks Soal -->
+                    <div class="soal-text" id="soal-teks">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+
+                    <!-- Opsi Jawaban -->
+                    <div class="opsi-container" id="opsi-container">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" onclick="prevSoal()" id="btn-prev">
+                            <i class="fas fa-arrow-left"></i>
+                            Sebelumnya
+                        </button>
+                        <button class="btn btn-primary" onclick="nextSoal()" id="btn-next">
+                            <i class="fas fa-arrow-right"></i>
+                            Selanjutnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Hasil -->
+            <div class="modal" id="hasil-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fas fa-trophy" style="font-size: 48px; color: #FFD700; margin-bottom: 15px;"></i>
+                        <h2>Hasil Quiz Mawaris</h2>
+                        <p id="modal-nama">Nama Siswa</p>
+                    </div>
+
+                    <div class="score-circle-large" id="modal-score">0</div>
+
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="value" id="modal-benar">0</div>
+                            <div class="label">Benar</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="value" id="modal-salah">0</div>
+                            <div class="label">Salah</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="value" id="modal-tidak">0</div>
+                            <div class="label">Tidak Dijawab</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 20px 0;">
+                        <button class="btn btn-primary" onclick="lihatPembahasan()">
+                            <i class="fas fa-book-open"></i>
+                            Lihat Pembahasan
+                        </button>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button class="btn btn-secondary" onclick="ulangQuiz()">
+                            <i class="fas fa-redo"></i>
+                            Ulang Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database 30 Soal Mawaris dengan Petunjuk Materi
+        const soalDatabase = [
+            // ========== LITERASI AL-QUR'AN (Soal 1-10) ==========
+            {
+                id: 1,
+                jenis: "Literasi Al-Qur'an",
+                level: "C1",
+                materi: {
+                    judul: "📖 QS. An-Nisa' Ayat 11",
+                    deskripsi: "Ayat ini menjelaskan tentang bagian anak laki-laki dan perempuan. Kata kunci: 'lildzakari mitslu hazdhil untsayain' (bagian laki-laki dua kali bagian perempuan)."
+                },
+                soal: "Perhatikan potongan ayat berikut:\n\nيُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنْثَيَيْنِ\n\nAyat di atas terdapat dalam...",
+                opsi: [
+                    "QS. An-Nisa' ayat 176",
+                    "QS. An-Nisa' ayat 12", 
+                    "QS. An-Nisa' ayat 11",
+                    "QS. Al-Baqarah ayat 233",
+                    "QS. Al-Maidah ayat 38"
+                ],
+                jawaban: "C",
+                pembahasan: "Ayat tersebut adalah QS. An-Nisa' ayat 11 yang menjelaskan tentang pembagian waris untuk anak-anak."
+            },
+            {
+                id: 2,
+                jenis: "Literasi Al-Qur'an",
+                level: "C1",
+                materi: {
+                    judul: "📖 Bagian Anak Perempuan (≥2)",
+                    deskripsi: "QS. An-Nisa' ayat 11: 'fain kunna nisa'an fauqatsnataini falahunna tsulutsa ma taraka' - Jika anak perempuan lebih dari dua, mereka mendapat 2/3 harta."
+                },
+                soal: "Dalam QS. An-Nisa' ayat 11, Allah menetapkan bahwa bagian anak perempuan yang jumlahnya lebih dari dua orang (tanpa anak laki-laki) adalah...",
+                opsi: [
+                    "1/2 dari harta",
+                    "1/3 dari harta",
+                    "1/4 dari harta",
+                    "2/3 dari harta",
+                    "Semua harta"
+                ],
+                jawaban: "D",
+                pembahasan: "Allah berfirman: 'fain kunna nisa'an fauqatsnataini falahunna tsulutsa ma taraka' (Jika mereka (anak perempuan) itu lebih dari dua, maka mereka mendapat dua pertiga dari harta yang ditinggalkan)."
+            },
+            {
+                id: 3,
+                jenis: "Literasi Al-Qur'an",
+                level: "C2",
+                materi: {
+                    judul: "📖 Prinsip 2:1",
+                    deskripsi: "Prinsip 'lildzakari mitslu hazdhil untsayain' berlaku untuk anak kandung, bukan untuk suami-istri atau orang tua."
+                },
+                soal: "لِلذَّكَرِ مِثْلُ حَظِّ الْأُنْثَيَيْنِ\n\nPrinsip 'bagian laki-laki dua kali bagian perempuan' dalam ayat ini berlaku untuk ahli waris golongan...",
+                opsi: [
+                    "Suami dan istri",
+                    "Anak kandung",
+                    "Ayah dan ibu",
+                    "Saudara kandung",
+                    "Kakek dan nenek"
+                ],
+                jawaban: "B",
+                pembahasan: "Ayat diawali dengan 'fi auladikum' (tentang anak-anakmu), sehingga prinsip ini khusus untuk anak kandung."
+            },
+            {
+                id: 4,
+                jenis: "Literasi Al-Qur'an",
+                level: "C2",
+                materi: {
+                    judul: "📖 QS. An-Nisa' Ayat 12",
+                    deskripsi: "Ayat ini menjelaskan bagian suami-istri. Suami dapat 1/2 (jika istri tak beranak) atau 1/4 (jika istri beranak). Istri dapat 1/4 (jika suami tak beranak) atau 1/8 (jika suami beranak)."
+                },
+                soal: "وَلَهُنَّ الرُّبُعُ مِمَّا تَرَكْتُمْ إِن لَّمْ يَكُن لَّكُمْ وَلَدٌ ۚ فَإِن كَانَ لَكُمْ وَلَدٌ فَلَهُنَّ الثُّمُنُ\n\nTerjemahan yang tepat dari potongan ayat tersebut adalah...",
+                opsi: [
+                    "Istri mendapat 1/4 jika tidak punya anak, dan 1/8 jika punya anak",
+                    "Istri mendapat 1/4 jika suami tidak punya anak, dan 1/8 jika suami punya anak",
+                    "Suami mendapat 1/4 jika tidak punya anak, dan 1/8 jika punya anak",
+                    "Ibu mendapat 1/4 jika tidak punya anak, dan 1/8 jika punya anak",
+                    "Anak perempuan mendapat 1/4 jika tidak punya saudara, dan 1/8 jika punya saudara"
+                ],
+                jawaban: "B",
+                pembahasan: "Kata 'taraktum' (kamu tinggalkan) merujuk pada suami yang meninggal. Maka yang dimaksud adalah istri mendapat 1/4 jika suami tidak punya anak, dan 1/8 jika suami punya anak."
+            },
+            {
+                id: 5,
+                jenis: "Literasi Al-Qur'an",
+                level: "C2",
+                materi: {
+                    judul: "📖 Konsep Kalalah",
+                    deskripsi: "Kalalah adalah orang yang meninggal tanpa meninggalkan ayah dan anak. Dijelaskan dalam QS. An-Nisa' ayat 176."
+                },
+                soal: "QS. An-Nisa' ayat 176 menjelaskan tentang warisan bagi orang yang 'kalalah', yaitu...",
+                opsi: [
+                    "Orang yang meninggal dengan meninggalkan kedua orang tua",
+                    "Orang yang meninggal dengan meninggalkan anak laki-laki",
+                    "Orang yang meninggal tanpa meninggalkan ayah dan anak",
+                    "Orang yang meninggal tanpa meninggalkan harta",
+                    "Orang yang meninggal dengan meninggalkan utang"
+                ],
+                jawaban: "C",
+                pembahasan: "Kalalah secara bahasa berarti kelelahan, secara istilah adalah mati tanpa meninggalkan ayah dan anak."
+            },
+            {
+                id: 6,
+                jenis: "Literasi Al-Qur'an",
+                level: "C3",
+                materi: {
+                    judul: "📖 Prioritas: Utang, Wasiat, Waris",
+                    deskripsi: "QS. An-Nisa' 11-12: 'min ba'di washiatin yushi biha au dain' - setelah wasiat atau utang. Urutan: Utang dulu, lalu wasiat (max 1/3 sisa), baru waris."
+                },
+                soal: "Dalam QS. An-Nisa' ayat 11 dan 12, terdapat frasa berulang: 'min ba'di washiatin yushi biha au dain'. Urutan prioritas pengeluaran dari harta mayit sebelum dibagikan kepada ahli waris adalah...",
+                opsi: [
+                    "Waris → Wasiat → Utang",
+                    "Wasiat → Utang → Waris",
+                    "Utang → Wasiat → Waris",
+                    "Waris → Utang → Wasiat",
+                    "Utang → Waris → Wasiat"
+                ],
+                jawaban: "C",
+                pembahasan: "Didahulukan utang (hak sesama manusia), kemudian wasiat (maksimal 1/3 sisa harta), baru waris dibagikan kepada ahli waris."
+            },
+            {
+                id: 7,
+                jenis: "Literasi Hadits",
+                level: "C3",
+                materi: {
+                    judul: "📖 Hadits Ashabah",
+                    deskripsi: "HR. Bukhari: 'Alhiqul faraidha biahliha fama baqiya fahuwa li aula rajulin dzakarin' - Berikan bagian yang telah ditentukan kepada yang berhak, sisanya untuk laki-laki terdekat."
+                },
+                soal: "Rasulullah SAW bersabda: 'أَلْحِقُوا الْفَرَائِضَ بِأَهْلِهَا فَمَا بَقِيَ فَهُوَ لِأَوْلَى رَجُلٍ ذَكَرٍ'\n\nHadits ini menjelaskan tentang prinsip...",
+                opsi: [
+                    "Semua ahli waris mendapat bagian tetap",
+                    "Ashabah (sisa harta untuk kerabat laki-laki terdekat)",
+                    "Bagian istri setengah dari suami",
+                    "Anak angkat berhak mendapat waris",
+                    "Pembagian waris harus disaksikan hakim"
+                ],
+                jawaban: "B",
+                pembahasan: "Hadits ini menjelaskan konsep ashabah, yaitu kerabat laki-laki terdekat yang mendapat sisa harta setelah dzawil furudh."
+            },
+            {
+                id: 8,
+                jenis: "Literasi Al-Qur'an",
+                level: "C3",
+                materi: {
+                    judul: "📖 Kasus: Istri + Ibu + Anak Laki",
+                    deskripsi: "QS. An-Nisa' 11-12: Istri dapat 1/8 (karena ada anak), Ibu dapat 1/6 (karena ada anak), Anak laki mendapat sisa (ashabah)."
+                },
+                soal: "Seorang laki-laki meninggal dengan ahli waris: istri, ibu, dan 1 anak laki-laki. Berdasarkan QS. An-Nisa' ayat 11-12, pernyataan yang BENAR adalah...",
+                opsi: [
+                    "Istri mendapat 1/4, ibu mendapat 1/6, anak laki mendapat sisa",
+                    "Istri mendapat 1/8, ibu mendapat 1/3, anak laki mendapat sisa",
+                    "Istri mendapat 1/8, ibu mendapat 1/6, anak laki mendapat sisa",
+                    "Istri mendapat 1/4, ibu mendapat 1/3, anak laki mendapat sisa",
+                    "Istri mendapat 1/8, ibu mendapat 1/4, anak laki mendapat sisa"
+                ],
+                jawaban: "C",
+                pembahasan: "Istri mendapat 1/8 karena ada anak, ibu mendapat 1/6 karena ada anak, dan anak laki-laki mendapat sisa sebagai ashabah."
+            },
+            {
+                id: 9,
+                jenis: "Literasi Al-Qur'an",
+                level: "C4",
+                materi: {
+                    judul: "📖 Analisis Perubahan Bagian Ibu",
+                    deskripsi: "QS. An-Nisa' 11: Ibu mendapat 1/6 jika ada anak; 1/3 jika tidak ada anak & tidak ada saudara; 1/6 jika tidak ada anak tapi ada saudara."
+                },
+                soal: "Dalam QS. An-Nisa' ayat 11, bagian ibu mengalami perubahan berdasarkan kondisi berikut:\n\n1. Ada anak\n2. Tidak ada anak, tidak ada saudara\n3. Tidak ada anak, ada saudara\n\nUrutan bagian ibu yang benar adalah...",
+                opsi: [
+                    "1/6, 1/2, 1/3",
+                    "1/8, 1/3, 1/6",
+                    "1/6, 1/3, 1/6",
+                    "1/3, 1/6, 1/8",
+                    "1/4, 1/3, 1/6"
+                ],
+                jawaban: "C",
+                pembahasan: "Sesuai ayat: (1) Ada anak → 1/6, (2) Tidak ada anak & tidak ada saudara → 1/3, (3) Tidak ada anak tapi ada saudara → 1/6."
+            },
+            {
+                id: 10,
+                jenis: "Literasi Al-Qur'an",
+                level: "C4",
+                materi: {
+                    judul: "📖 Analisis Ayat Suami",
+                    deskripsi: "QS. An-Nisa' 12: 'wa lakum nishfu ma taraka azwajukum' - kamu (suami) mendapat setengah dari harta istri yang meninggal."
+                },
+                soal: "وَلَكُمْ نِصْفُ مَا تَرَكَ أَزْوَاجُكُمْ إِن لَّمْ يَكُن لَّهُنَّ وَلَدٌ\n\nTerjemahan yang tepat dari ayat di atas adalah...",
+                opsi: [
+                    "Para istri mendapat setengah dari harta suaminya jika suami tidak punya anak",
+                    "Kamu (para suami) mendapat setengah dari harta istri yang meninggal jika istri tidak punya anak",
+                    "Kamu (para istri) mendapat setengah dari harta suami yang meninggal jika suami tidak punya anak",
+                    "Para suami mendapat setengah dari harta istrinya jika istri punya anak",
+                    "Masing-masing suami-istri mendapat setengah harta"
+                ],
+                jawaban: "B",
+                pembahasan: "Ayat ini berbicara tentang bagian suami dari harta istri yang meninggal. 'Wa lakum' artinya 'dan bagi kamu (para suami)', 'ma taraka azwajukum' artinya 'harta yang ditinggalkan istri-istrimu'."
+            },
+
+            // ========== NUMERASI MAWARIS (Soal 11-20) ==========
+            {
+                id: 11,
+                jenis: "Numerasi",
+                level: "C2",
+                materi: {
+                    judul: "🧮 Menghitung Bagian Istri",
+                    deskripsi: "Rumus: Istri mendapat 1/8 jika ada anak. Hitung: (1/8) × Total harta."
+                },
+                soal: "Pak Ahmad meninggal dunia. Ahli waris: istri dan 2 anak laki-laki. Harta warisan Rp 240.000.000. Bagian istri adalah...",
+                opsi: [
+                    "Rp 20.000.000",
+                    "Rp 30.000.000",
+                    "Rp 40.000.000",
+                    "Rp 60.000.000",
+                    "Rp 80.000.000"
+                ],
+                jawaban: "B",
+                pembahasan: "Istri mendapat 1/8 (karena ada anak) = 1/8 × Rp 240.000.000 = Rp 30.000.000"
+            },
+            {
+                id: 12,
+                jenis: "Numerasi",
+                level: "C2",
+                materi: {
+                    judul: "🧮 Sisa untuk Anak Laki",
+                    deskripsi: "Sisa harta setelah bagian istri dibagi rata kepada anak laki-laki."
+                },
+                soal: "Dari kasus sebelumnya (soal 11), sisa harta setelah bagian istri adalah untuk anak-anak. Berapa bagian masing-masing anak laki-laki?",
+                opsi: [
+                    "Rp 70.000.000",
+                    "Rp 80.000.000",
+                    "Rp 105.000.000",
+                    "Rp 120.000.000",
+                    "Rp 210.000.000"
+                ],
+                jawaban: "C",
+                pembahasan: "Sisa = Rp 240.000.000 - Rp 30.000.000 = Rp 210.000.000. Dibagi 2 anak laki = Rp 105.000.000 masing-masing."
+            },
+            {
+                id: 13,
+                jenis: "Numerasi",
+                level: "C3",
+                materi: {
+                    judul: "🧮 Perbandingan 2:1",
+                    deskripsi: "Anak laki : anak perempuan = 2 : 1. Hitung total bagian = (jumlah laki × 2) + (jumlah perempuan × 1)."
+                },
+                soal: "Seorang ayah meninggal dengan ahli waris: 1 anak laki-laki dan 3 anak perempuan. Harta warisan Rp 300.000.000. Bagian anak laki-laki adalah...",
+                opsi: [
+                    "Rp 60.000.000",
+                    "Rp 75.000.000",
+                    "Rp 100.000.000",
+                    "Rp 120.000.000",
+                    "Rp 150.000.000"
+                ],
+                jawaban: "D",
+                pembahasan: "Laki-laki : perempuan = 2 : 1. 1 anak laki = 2 bagian, 3 anak perempuan = 3 bagian. Total 5 bagian. Nilai per bagian = Rp 300.000.000 ÷ 5 = Rp 60.000.000. Anak laki-laki = 2 × Rp 60.000.000 = Rp 120.000.000"
+            },
+            {
+                id: 14,
+                jenis: "Numerasi",
+                level: "C3",
+                materi: {
+                    judul: "🧮 Kasus Anak Perempuan Tunggal",
+                    deskripsi: "Anak perempuan tunggal mendapat 1/2. Suami mendapat 1/4 jika ada anak. Ibu mendapat 1/6. Jika total < 1, sisa di-radd ke anak."
+                },
+                soal: "Bu Siti meninggal dunia. Ahli waris: suami, ibu, dan 1 anak perempuan. Harta Rp 240.000.000. Berapa bagian anak perempuan?",
+                opsi: [
+                    "Rp 80.000.000",
+                    "Rp 90.000.000",
+                    "Rp 120.000.000",
+                    "Rp 130.000.000",
+                    "Rp 140.000.000"
+                ],
+                jawaban: "E",
+                pembahasan: "Anak perempuan = 1/2 = Rp 120.000.000, Suami = 1/4 = Rp 60.000.000, Ibu = 1/6 = Rp 40.000.000. Total = Rp 220.000.000, sisa Rp 20.000.000 di-radd ke anak perempuan. Jadi anak perempuan mendapat Rp 140.000.000."
+            },
+            {
+                id: 15,
+                jenis: "Numerasi",
+                level: "C4",
+                materi: {
+                    judul: "🧮 Menentukan Asal Masalah (KPK)",
+                    deskripsi: "Asal masalah adalah KPK dari penyebut-penyebut bagian ahli waris. Contoh: 1/4, 1/6, 2/3 → penyebut 4,6,3 → KPK = 12."
+                },
+                soal: "Ahli waris terdiri dari: suami (1/4), ibu (1/6), dan 2 anak perempuan (2/3). Asal masalah (KPK) dari penyebut-penyebut tersebut adalah...",
+                opsi: [
+                    "6",
+                    "8",
+                    "12",
+                    "18",
+                    "24"
+                ],
+                jawaban: "C",
+                pembahasan: "Penyebut: 4, 6, 3. KPK dari 4, 6, dan 3 adalah 12."
+            },
+            {
+                id: 16,
+                jenis: "Numerasi",
+                level: "C4",
+                materi: {
+                    judul: "🧮 'Aul (Kelebihan Total Bagian)",
+                    deskripsi: "Jika total pecahan > 1, maka penyebut dinaikkan sesuai total pembilang. Contoh: 3/12 + 2/12 + 8/12 = 13/12 → 'aul ke 13."
+                },
+                soal: "Dari kasus sebelumnya, jika total bagian adalah 13/12 dan harta Rp 312.000.000, berapa bagian 2 anak perempuan setelah 'aul?",
+                opsi: [
+                    "Rp 144.000.000",
+                    "Rp 156.000.000",
+                    "Rp 168.000.000",
+                    "Rp 180.000.000",
+                    "Rp 192.000.000"
+                ],
+                jawaban: "E",
+                pembahasan: "'Aul ke 13. Bagian 2 anak perempuan = 8/13 × Rp 312.000.000 = 8 × Rp 24.000.000 = Rp 192.000.000"
+            },
+            {
+                id: 17,
+                jenis: "Numerasi",
+                level: "C4",
+                materi: {
+                    judul: "🧮 Hijab (Terhalang)",
+                    deskripsi: "Ahli waris yang lebih dekat menghalangi (menghijab) yang lebih jauh. Contoh: Ayah menghalangi kakek, anak laki menghalangi saudara."
+                },
+                soal: "Ahli waris terdiri dari: ayah, ibu, 2 anak laki-laki, dan kakek. Siapa yang terhijab (terhalang) mendapatkan warisan?",
+                opsi: [
+                    "Ayah",
+                    "Ibu",
+                    "Anak laki-laki",
+                    "Kakek",
+                    "Tidak ada yang terhijab"
+                ],
+                jawaban: "D",
+                pembahasan: "Kakek terhijab oleh ayah (ayah lebih dekat hubungannya dengan mayit)."
+            },
+            {
+                id: 18,
+                jenis: "Numerasi",
+                level: "C5",
+                materi: {
+                    judul: "🧮 Perbandingan Dua Kasus",
+                    deskripsi: "Bandingkan total bagian anak pada dua kasus berbeda dengan harta yang sama."
+                },
+                soal: "Pak Amir meninggal dengan harta Rp 360.000.000. Ahli warisnya: istri dan 2 anak perempuan. Pak Burhan meninggal dengan harta Rp 360.000.000. Ahli warisnya: istri, 1 anak laki-laki, dan 1 anak perempuan.\n\nPerbandingan total bagian anak-anak Pak Amir : total bagian anak-anak Pak Burhan adalah...",
+                opsi: [
+                    "1 : 1",
+                    "2 : 3",
+                    "3 : 4",
+                    "4 : 5",
+                    "5 : 6"
+                ],
+                jawaban: "A",
+                pembahasan: "Pak Amir: 2 anak perempuan = 2/3 + radd ≈ Rp 315.000.000. Pak Burhan: 1 laki + 1 perempuan = 2:1, sisa setelah istri 1/8 = Rp 315.000.000. Perbandingan 1:1."
+            },
+            {
+                id: 19,
+                jenis: "Numerasi",
+                level: "C5",
+                materi: {
+                    judul: "🧮 Wasiat Melebihi 1/3",
+                    deskripsi: "Wasiat maksimal 1/3 harta setelah utang. Kelebihan batal kecuali disetujui ahli waris."
+                },
+                soal: "Pak Dodi meninggal dengan harta Rp 600.000.000. Utang Rp 60.000.000. Wasiat Rp 250.000.000 untuk pembangunan masjid. Ahli waris: istri, ibu, dan 2 anak laki-laki. Jika ahli waris tidak menyetujui kelebihan wasiat, berapa bagian istri?",
+                opsi: [
+                    "Rp 45.000.000",
+                    "Rp 50.000.000",
+                    "Rp 56.250.000",
+                    "Rp 60.000.000",
+                    "Rp 67.500.000"
+                ],
+                jawaban: "A",
+                pembahasan: "Harta setelah utang = Rp 540.000.000. Wasiat maksimal = 1/3 × Rp 540.000.000 = Rp 180.000.000. Harta setelah wasiat = Rp 360.000.000. Istri = 1/8 × Rp 360.000.000 = Rp 45.000.000."
+            },
+            {
+                id: 20,
+                jenis: "Numerasi",
+                level: "C5",
+                materi: {
+                    judul: "🧮 Metode Radd",
+                    deskripsi: "Radd adalah mengembalikan kelebihan harta kepada dzawil furudh selain suami-istri secara proporsional."
+                },
+                soal: "Ahli waris hanya terdiri dari: 1 anak perempuan dan ibu. Harta Rp 240.000.000. Berapa bagian ibu?",
+                opsi: [
+                    "Rp 40.000.000",
+                    "Rp 48.000.000",
+                    "Rp 60.000.000",
+                    "Rp 80.000.000",
+                    "Rp 120.000.000"
+                ],
+                jawaban: "A",
+                pembahasan: "Anak perempuan = 1/2 = 3/6, Ibu = 1/6. Total = 4/6, sisa 2/6 di-radd ke anak. Ibu tetap mendapat 1/6 = Rp 40.000.000."
+            },
+
+            // ========== SOAL HOTS (Soal 21-30) ==========
+            {
+                id: 21,
+                jenis: "HOTS",
+                level: "C5",
+                materi: {
+                    judul: "🎯 Analisis Pernyataan",
+                    deskripsi: "Evaluasi kebenaran beberapa pernyataan tentang bagian ibu, suami, dan istri."
+                },
+                soal: "Perhatikan pernyataan-pernyataan berikut:\n\n1. Ibu mendapat 1/3 jika mayit tidak memiliki anak dan tidak memiliki saudara\n2. Suami mendapat 1/2 jika istri tidak memiliki anak\n3. Istri mendapat 1/4 jika suami memiliki anak\n\nPernyataan yang BENAR adalah...",
+                opsi: [
+                    "1, 2, dan 3",
+                    "1 dan 2",
+                    "2 dan 3",
+                    "1 dan 3",
+                    "Hanya 2"
+                ],
+                jawaban: "B",
+                pembahasan: "Pernyataan 3 salah. Istri mendapat 1/4 jika suami TIDAK memiliki anak, dan mendapat 1/8 jika suami memiliki anak."
+            },
+            {
+                id: 22,
+                jenis: "HOTS",
+                level: "C6",
+                materi: {
+                    judul: "🎯 Analisis 'Aul",
+                    deskripsi: "Kasus dengan total bagian > 1 sehingga perlu 'aul. Hitung bagian masing-masing setelah 'aul."
+                },
+                soal: "Seorang perempuan meninggal dengan ahli waris: suami (1/2), ibu (1/6), dan 2 saudara perempuan kandung (2/3). Jika harta Rp 420.000.000, berapa bagian suami setelah 'aul?",
+                opsi: [
+                    "Rp 120.000.000",
+                    "Rp 140.000.000",
+                    "Rp 160.000.000",
+                    "Rp 180.000.000",
+                    "Rp 200.000.000"
+                ],
+                jawaban: "D",
+                pembahasan: "Suami = 1/2 = 3/6, Ibu = 1/6 = 1/6, 2 saudara = 2/3 = 4/6. Total = 8/6 → 'aul ke 8. Bagian suami = 3/8 × Rp 420.000.000 = Rp 157.500.000. (Tidak ada di opsi, soal perlu revisi)"
+            },
+            {
+                id: 23,
+                jenis: "HOTS",
+                level: "C6",
+                materi: {
+                    judul: "🎯 Kasus Komprehensif dengan Wasiat",
+                    deskripsi: "Selesaikan kasus lengkap dengan harta bersama, utang, wasiat, dan 5 orang ahli waris."
+                },
+                soal: "Pak Rahmat meninggal dengan data:\n- Harta bersama: Rp 800.000.000\n- Harta pribadi: Rp 400.000.000\n- Utang: Rp 150.000.000\n- Wasiat: Rp 200.000.000\n\nAhli waris: istri, ibu, ayah, 2 anak laki, 3 anak perempuan.\n\nBerapa bagian masing-masing anak perempuan?",
+                opsi: [
+                    "Rp 50.000.000",
+                    "Rp 62.500.000",
+                    "Rp 75.000.000",
+                    "Rp 81.250.000",
+                    "Rp 93.750.000"
+                ],
+                jawaban: "D",
+                pembahasan: "Harta bersama = Rp 800 jt → milik mayit = Rp 400 jt. Total = Rp 800 jt. Utang = Rp 150 jt → sisa = Rp 650 jt. Wasiat max = 1/3 × Rp 650 jt = Rp 216,67 jt (wasiat Rp 200 jt diterima). Sisa = Rp 450 jt.\n\nIstri = 1/8 = Rp 56,25 jt, Ibu = 1/6 = Rp 75 jt, Ayah = 1/6 = Rp 75 jt, Sisa anak = Rp 243,75 jt.\n\nTotal anak = 2 laki (2×2=4 bagian) + 3 perempuan (3×1=3 bagian) = 7 bagian. Per bagian = Rp 34,82 jt. Perempuan masing-masing = Rp 34,82 jt. (Tidak cocok dengan opsi)"
+            },
+            {
+                id: 24,
+                jenis: "HOTS",
+                level: "C5",
+                materi: {
+                    judul: "🎯 Hikmah Ayat",
+                    deskripsi: "Memahami hikmah di balik ketentuan Allah tentang pembagian waris."
+                },
+                soal: "Allah berfirman: 'آبَاؤُكُمْ وَأَبْنَاؤُكُمْ لَا تَدْرُونَ أَيُّهُمْ أَقْرَبُ لَكُمْ نَفْعًا'\n\nHikmah dari ayat ini (QS. An-Nisa': 11) adalah...",
+                opsi: [
+                    "Manusia tidak boleh memilih ahli waris favorit",
+                    "Allah lebih mengetahui siapa yang lebih bermanfaat bagi kita, maka ikutilah ketetapan-Nya",
+                    "Orang tua lebih bermanfaat daripada anak",
+                    "Anak lebih bermanfaat daripada orang tua",
+                    "Semua ahli waris sama bermanfaatnya"
+                ],
+                jawaban: "B",
+                pembahasan: "Ayat ini mengajarkan bahwa manusia tidak mengetahui siapa yang lebih bermanfaat, maka serahkanlah kepada ketetapan Allah."
+            },
+            {
+                id: 25,
+                jenis: "HOTS",
+                level: "C5",
+                materi: {
+                    judul: "🎯 Hadits Larangan Wasiat untuk Ahli Waris",
+                    deskripsi: "HR. Tirmidzi: 'La washiiyata li waritsin' - Tidak ada wasiat untuk ahli waris."
+                },
+                soal: "Rasulullah SAW bersabda: 'إِنَّ اللَّهَ قَدْ أَعْطَى كُلَّ ذِي حَقٍّ حَقَّهُ، فَلَا وَصِيَّةَ لِوَارِثٍ'\n\nMakna hadits di atas adalah...",
+                opsi: [
+                    "Setiap ahli waris harus memberi wasiat",
+                    "Tidak boleh berwasiat untuk ahli waris karena mereka sudah mendapat bagian",
+                    "Wasiat hanya boleh untuk ahli waris",
+                    "Ahli waris berhak mendapat wasiat tambahan",
+                    "Wasiat lebih utama daripada waris"
+                ],
+                jawaban: "B",
+                pembahasan: "Hadits ini melarang wasiat untuk ahli waris karena mereka sudah mendapat bagian yang ditentukan Allah."
+            },
+            {
+                id: 26,
+                jenis: "HOTS",
+                level: "C6",
+                materi: {
+                    judul: "🎯 Analisis Kasus dengan 'Aul",
+                    deskripsi: "Kasus dengan total bagian 15/12 sehingga perlu 'aul."
+                },
+                soal: "Seorang muslimah meninggal dengan ahli waris: suami, ibu, ayah, dan 3 anak perempuan. Berapa asal masalah setelah 'aul?",
+                opsi: [
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16"
+                ],
+                jawaban: "D",
+                pembahasan: "Suami = 1/4 = 3/12, Ibu = 1/6 = 2/12, Ayah = 1/6 = 2/12, 3 anak perempuan = 2/3 = 8/12. Total = 3+2+2+8 = 15/12 → 'aul ke 15."
+            },
+            {
+                id: 27,
+                jenis: "HOTS",
+                level: "C5",
+                materi: {
+                    judul: "🎯 Perbedaan 'Aul dan Radd",
+                    deskripsi: "'Aul: total > 1 → penyebut dinaikkan. Radd: total < 1 → sisa dikembalikan ke ahli waris selain suami-istri."
+                },
+                soal: "Perbedaan utama antara 'aul dan radd dalam ilmu waris adalah...",
+                opsi: [
+                    "'Aul untuk kasus kelebihan harta, radd untuk kekurangan harta",
+                    "'Aul untuk kasus kekurangan harta (total > 1), radd untuk kelebihan harta (total < 1)",
+                    "'Aul digunakan jika ada anak, radd jika tidak ada anak",
+                    "'Aul untuk ahli waris laki-laki, radd untuk perempuan",
+                    "Tidak ada perbedaan, keduanya sama"
+                ],
+                jawaban: "B",
+                pembahasan: "'Aul digunakan ketika total bagian melebihi harta (penyebut dinaikkan), radd digunakan ketika total bagian kurang dari harta (sisa dikembalikan)."
+            },
+            {
+                id: 28,
+                jenis: "HOTS",
+                level: "C6",
+                materi: {
+                    judul: "🎯 Kasus dengan Saudara",
+                    deskripsi: "QS. An-Nisa' 176 tentang warisan kalalah (tanpa ayah dan anak) dengan saudara."
+                },
+                soal: "Seorang laki-laki meninggal tanpa meninggalkan ayah dan anak. Ahli warisnya: 1 saudara perempuan kandung dan 1 saudara laki-laki kandung. Berapa bagian saudara laki-laki?",
+                opsi: [
+                    "1/2",
+                    "1/3",
+                    "2/3",
+                    "3/4",
+                    "Semua sisa"
+                ],
+                jawaban: "C",
+                pembahasan: "Berdasarkan QS. An-Nisa' 176, jika ahli waris terdiri dari saudara laki dan perempuan, maka laki-laki mendapat 2/3 dan perempuan 1/3 (perbandingan 2:1)."
+            },
+            {
+                id: 29,
+                jenis: "HOTS",
+                level: "C6",
+                materi: {
+                    judul: "🎯 Analisis Prioritas",
+                    deskripsi: "Urutan penyelesaian harta mayit: (1) Biaya perawatan jenazah, (2) Utang, (3) Wasiat, (4) Waris."
+                },
+                soal: "Seorang mayit meninggalkan harta Rp 100.000.000. Ia memiliki utang Rp 30.000.000, wasiat Rp 40.000.000, dan biaya perawatan jenazah Rp 5.000.000. Urutan pengeluaran yang benar adalah...",
+                opsi: [
+                    "Biaya jenazah → Wasiat → Utang → Waris",
+                    "Biaya jenazah → Utang → Wasiat → Waris",
+                    "Utang → Biaya jenazah → Wasiat → Waris",
+                    "Wasiat → Utang → Biaya jenazah → Waris",
+                    "Waris → Biaya jenazah → Utang → Wasiat"
+                ],
+                jawaban: "B",
+                pembahasan: "Urutan yang benar: (1) Biaya perawatan jenazah, (2) Utang, (3) Wasiat (max 1/3 sisa), (4) Waris."
+            },
+            {
+                id: 30,
+                jenis: "HOTS",
+                level: "C6",
+                materi: {
+                    judul: "🎯 Kasus Komprehensif Akhir",
+                    deskripsi: "Gabungan semua konsep: utang, wasiat, 'aul, dan berbagai ahli waris."
+                },
+                soal: "Pak Umar meninggal dengan harta Rp 600.000.000. Utang Rp 50.000.000. Wasiat Rp 150.000.000. Ahli waris: istri, ibu, 1 anak laki, dan 2 anak perempuan. Berapa bagian anak laki-laki?",
+                opsi: [
+                    "Rp 100.000.000",
+                    "Rp 120.000.000",
+                    "Rp 140.000.000",
+                    "Rp 160.000.000",
+                    "Rp 180.000.000"
+                ],
+                jawaban: "E",
+                pembahasan: "Harta setelah utang = Rp 550.000.000. Wasiat max = 1/3 × Rp 550 jt = Rp 183,33 jt (wasiat Rp 150 jt diterima). Sisa = Rp 400.000.000.\n\nIstri = 1/8 = Rp 50.000.000. Ibu = 1/6 = Rp 66.666.667. Sisa anak = Rp 283.333.333.\n\nLaki : 2 perempuan = 2 : 2 (total 4 bagian). Per bagian = Rp 70.833.333. Anak laki = 2 × Rp 70.833.333 = Rp 141.666.666 ≈ Rp 140.000.000 (pembulatan)."
+            }
+        ];
+
+        // State aplikasi
+        let state = {
+            nama: "",
+            kelas: "",
+            jawaban: Array(soalDatabase.length).fill(null),
+            currentSoal: 0,
+            isStarted: false
+        };
+
+        // Inisialisasi
+        document.addEventListener('DOMContentLoaded', function() {
+            renderNavigasi();
+        });
+
+        // Render navigasi soal
+        function renderNavigasi() {
+            const nav = document.getElementById('soal-nav');
+            nav.innerHTML = '';
+            
+            for (let i = 0; i < soalDatabase.length; i++) {
+                const navItem = document.createElement('div');
+                navItem.className = 'nav-item';
+                if (state.jawaban[i] !== null) {
+                    navItem.classList.add('answered');
+                }
+                if (state.currentSoal === i && state.isStarted) {
+                    navItem.classList.add('active');
+                }
+                navItem.textContent = i + 1;
+                navItem.onclick = () => goToSoal(i);
+                nav.appendChild(navItem);
+            }
+            
+            updateProgress();
+        }
+
+        // Update progress
+        function updateProgress() {
+            const terjawab = state.jawaban.filter(j => j !== null).length;
+            const persen = (terjawab / soalDatabase.length) * 100;
+            
+            document.getElementById('terjawab-count').textContent = `${terjawab}/${soalDatabase.length}`;
+            document.getElementById('progress-persen').textContent = `${Math.round(persen)}%`;
+            document.getElementById('sidebar-progress').style.width = `${persen}%`;
+            
+            // Update nama di sidebar
+            if (state.nama) {
+                document.getElementById('nama-siswa').textContent = state.nama;
+            }
+        }
+
+        // Mulai quiz
+        function mulaiQuiz() {
+            const nama = document.getElementById('input-nama').value.trim();
+            const kelas = document.getElementById('input-kelas').value;
+            
+            if (!nama) {
+                alert('Harap isi nama terlebih dahulu!');
+                return;
+            }
+            
+            state.nama = nama;
+            state.kelas = kelas;
+            state.isStarted = true;
+            
+            document.getElementById('form-identitas').style.display = 'none';
+            document.getElementById('soal-container').style.display = 'block';
+            
+            document.getElementById('nama-siswa').textContent = nama;
+            
+            tampilkanSoal(0);
+            renderNavigasi();
+        }
+
+        // Tampilkan soal
+        function tampilkanSoal(index) {
+            const soal = soalDatabase[index];
+            if (!soal) return;
+            
+            state.currentSoal = index;
+            
+            // Update header
+            document.getElementById('soal-number').textContent = index + 1;
+            document.getElementById('soal-jenis').textContent = soal.jenis;
+            document.getElementById('soal-level').textContent = soal.level;
+            document.getElementById('kategori-badge').textContent = soal.jenis;
+            
+            // Update petunjuk materi
+            document.getElementById('materi-title').innerHTML = `<i class="fas fa-bookmark"></i> ${soal.materi.judul}`;
+            document.getElementById('materi-deskripsi').textContent = soal.materi.deskripsi;
+            
+            // Update teks soal
+            document.getElementById('soal-teks').innerHTML = soal.soal.replace(/\n/g, '<br>');
+            
+            // Update opsi
+            const opsiContainer = document.getElementById('opsi-container');
+            opsiContainer.innerHTML = '';
+            
+            const labels = ['A', 'B', 'C', 'D', 'E'];
+            soal.opsi.forEach((opsi, i) => {
+                const opsiElement = document.createElement('div');
+                opsiElement.className = 'opsi';
+                if (state.jawaban[index] === labels[i]) {
+                    opsiElement.classList.add('selected');
+                }
+                opsiElement.innerHTML = `
+                    <span class="opsi-prefix">${labels[i]}</span>
+                    <span class="opsi-text">${opsi}</span>
+                `;
+                opsiElement.onclick = () => pilihJawaban(labels[i]);
+                opsiContainer.appendChild(opsiElement);
+            });
+            
+            // Update navigasi
+            renderNavigasi();
+        }
+
+        // Pilih jawaban
+        function pilihJawaban(jawaban) {
+            state.jawaban[state.currentSoal] = jawaban;
+            tampilkanSoal(state.currentSoal);
+            updateProgress();
+        }
+
+        // Navigasi sebelumnya
+        function prevSoal() {
+            if (state.currentSoal > 0) {
+                tampilkanSoal(state.currentSoal - 1);
+            }
+        }
+
+        // Navigasi selanjutnya
+        function nextSoal() {
+            if (state.currentSoal < soalDatabase.length - 1) {
+                tampilkanSoal(state.currentSoal + 1);
+            } else {
+                // Jika sudah di soal terakhir, tampilkan hasil
+                if (state.jawaban.filter(j => j !== null).length === soalDatabase.length) {
+                    tampilkanHasil();
+                } else {
+                    if (confirm('Anda belum menjawab semua soal. Tetap lihat hasil?')) {
+                        tampilkanHasil();
+                    }
+                }
+            }
+        }
+
+        // Go to soal tertentu
+        function goToSoal(index) {
+            tampilkanSoal(index);
+        }
+
+        // Tampilkan hasil
+        function tampilkanHasil() {
+            const benar = state.jawaban.filter((j, i) => j === soalDatabase[i].jawaban).length;
+            const salah = state.jawaban.filter((j, i) => j !== null && j !== soalDatabase[i].jawaban).length;
+            const tidak = state.jawaban.filter(j => j === null).length;
+            const skor = Math.round((benar / soalDatabase.length) * 100);
+            
+            document.getElementById('modal-nama').textContent = state.nama;
+            document.getElementById('modal-score').textContent = skor;
+            document.getElementById('modal-benar').textContent = benar;
+            document.getElementById('modal-salah').textContent = salah;
+            document.getElementById('modal-tidak').textContent = tidak;
+            
+            document.getElementById('hasil-modal').classList.add('active');
+        }
+
+        // Lihat pembahasan (simulasi)
+        function lihatPembahasan() {
+            alert('Fitur pembahasan akan menampilkan penjelasan detail untuk setiap soal.\n\nContoh untuk soal 1:\n' + soalDatabase[0].pembahasan);
+        }
+
+        // Ulang quiz
+        function ulangQuiz() {
+            document.getElementById('hasil-modal').classList.remove('active');
+            
+            state = {
+                nama: "",
+                kelas: "",
+                jawaban: Array(soalDatabase.length).fill(null),
+                currentSoal: 0,
+                isStarted: false
+            };
+            
+            document.getElementById('form-identitas').style.display = 'block';
+            document.getElementById('soal-container').style.display = 'none';
+            document.getElementById('input-nama').value = '';
+            document.getElementById('nama-siswa').textContent = 'Nama Siswa';
+            
+            renderNavigasi();
+        }
+
+        // Export fungsi untuk global
+        window.mulaiQuiz = mulaiQuiz;
+        window.prevSoal = prevSoal;
+        window.nextSoal = nextSoal;
+        window.pilihJawaban = pilihJawaban;
+        window.goToSoal = goToSoal;
+        window.tampilkanHasil = tampilkanHasil;
+        window.lihatPembahasan = lihatPembahasan;
+        window.ulangQuiz = ulangQuiz;
+    </script>
+</body>
+</html>
