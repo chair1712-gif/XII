@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTU SOAL - MAWARIS KELAS XII</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .kartu-container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px double #000;
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* Tabel Informasi Atas */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 1px solid #000;
+            font-size: 15px;
+        }
+
+        .info-table td {
+            border: 1px solid #000;
+            padding: 10px 12px;
+        }
+
+        .info-table .label {
+            font-weight: bold;
+            width: 25%;
+            background-color: #f0f0f0;
+        }
+
+        .info-table .content {
+            width: 25%;
+        }
+
+        /* Capaian Pembelajaran */
+        .cp-section {
+            margin-bottom: 20px;
+        }
+
+        .cp-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .cp-box {
+            border: 1px solid #000;
+            padding: 15px;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Tabel Nomor Soal */
+        .soal-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 1px solid #000;
+        }
+
+        .soal-table th {
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .soal-table td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .soal-table .no-col {
+            width: 10%;
+        }
+
+        .soal-table .kunci-col {
+            width: 15%;
+        }
+
+        .soal-table .level-col {
+            width: 20%;
+        }
+
+        .soal-table .bentuk-col {
+            width: 15%;
+        }
+
+        .level-detail {
+            font-size: 12px;
+            color: #555;
+            margin-top: 3px;
+        }
+
+        /* Materi Pembelajaran */
+        .materi-section {
+            margin-bottom: 20px;
+        }
+
+        .materi-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .materi-box {
+            border: 1px solid #000;
+            padding: 15px;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        .materi-box .sub-title {
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .materi-box .sub-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Indikator Asesmen */
+        .indikator-section {
+            margin-bottom: 20px;
+        }
+
+        .indikator-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .indikator-box {
+            border: 1px solid #000;
+            padding: 15px;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+
+        /* Rumusan Soal */
+        .soal-section {
+            margin-bottom: 20px;
+        }
+
+        .soal-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .soal-box {
+            border: 1px solid #000;
+            padding: 20px;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        .arab-text {
+            font-family: 'Traditional Arabic', 'Amiri', serif;
+            font-size: 22px;
+            direction: rtl;
+            text-align: right;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .hadits-text {
+            font-family: 'Traditional Arabic', 'Amiri', serif;
+            font-size: 20px;
+            direction: rtl;
+            text-align: right;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .opsi-list {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .opsi-list div {
+            margin-bottom: 8px;
+        }
+
+        .opsi-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .signature {
+            text-align: center;
+            width: 250px;
+        }
+
+        .signature .role {
+            font-weight: bold;
+            margin-bottom: 60px;
+        }
+
+        .signature .name {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 5px;
+        }
+
+        .signature .nip {
+            font-size: 13px;
+        }
+
+        .page-break {
+            page-break-before: always;
+            margin-top: 40px;
+            border-top: 2px dashed #999;
+            padding-top: 30px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .kartu-container {
+                box-shadow: none;
+                border: 1px solid #000;
+                page-break-after: always;
+            }
+            .soal-table th {
+                background-color: #2c3e50 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .info-table .label {
+                background-color: #f0f0f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- KARTU SOAL 1: QS. An-Nisa' Ayat 11 (Bagian Anak) -->
+    <div class="kartu-container">
+        <div class="header">
+            <h1>KARTU SOAL</h1>
+            <h2>PENILAIAN SUMATIF AKHIR TAHUN</h2>
+        </div>
+
+        <!-- Tabel Informasi -->
+        <table class="info-table">
+            <tr>
+                <td class="label">Satuan Pendidikan</td>
+                <td class="content">: SMA NEGERI 1 WIRADESA PEKALONGAN</td>
+                <td class="label">Tahun Pelajaran</td>
+                <td class="content">: 2024/2025</td>
+            </tr>
+            <tr>
+                <td class="label">Mata Pelajaran</td>
+                <td class="content">: Pendidikan Agama Islam dan Budi Pekerti</td>
+                <td class="label">Kelas</td>
+                <td class="content">: XII</td>
+            </tr>
+            <tr>
+                <td class="label">Kurikulum</td>
+                <td class="content">: Kurikulum Merdeka</td>
+                <td class="label">Semester</td>
+                <td class="content">: Gasal</td>
+            </tr>
+        </table>
+
+        <!-- Capaian Pembelajaran -->
+        <div class="cp-section">
+            <div class="cp-title">Capaian Pembelajaran</div>
+            <div class="cp-box">
+                Menganalisis ketentuan waris dalam QS. An-Nisa' ayat 11, 12, dan 176 serta hadits-hadits terkait, memahami hikmah pembagian waris, serta mampu mempraktikkan perhitungan waris dalam konteks kehidupan sehari-hari dengan adil dan sesuai syariat Islam.
+            </div>
+        </div>
+
+        <!-- Tabel Nomor Soal, Kunci, Level, Bentuk -->
+        <table class="soal-table">
+            <tr>
+                <th>Nomor Soal</th>
+                <th>Kunci Jawaban</th>
+                <th>Level Kognitif</th>
+                <th>Bentuk Soal</th>
+            </tr>
+            <tr>
+                <td class="no-col">1</td>
+                <td class="kunci-col">C</td>
+                <td class="level-col">
+                    Level 1<br>
+                    <span class="level-detail">(Pengetahuan dan Pemahaman)</span>
+                </td>
+                <td class="bentuk-col">Pilihan Ganda</td>
+            </tr>
+        </table>
+
+        <!-- Materi Pembelajaran -->
+        <div class="materi-section">
+            <div class="materi-title">Materi Pembelajaran</div>
+            <div class="materi-box">
+                <strong>Ketentuan Waris dalam Islam (QS. An-Nisa' Ayat 11)</strong><br><br>
+                <div class="arab-text">
+                    يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنْثَيَيْنِ ۚ فَإِنْ كُنَّ نِسَاءً فَوْقَ اثْنَتَيْنِ فَلَهُنَّ ثُلُثَا مَا تَرَكَ ۖ وَإِنْ كَانَتْ وَاحِدَةً فَلَهَا النِّصْفُ
+                </div>
+                <div><strong>Terjemah:</strong> "Allah mensyariatkan (mewajibkan) kepadamu tentang (pembagian warisan untuk) anak-anakmu, yaitu bagian seorang anak laki-laki sama dengan bagian dua orang anak perempuan. Dan jika anak itu semuanya perempuan yang jumlahnya lebih dari dua, maka bagian mereka dua pertiga dari harta yang ditinggalkan. Jika dia (anak perempuan) itu seorang saja, maka dia memperoleh setengah (harta yang ditinggalkan)..." (QS. An-Nisa': 11)</div>
+                <div class="sub-title">Pokok-pokok Materi:</div>
+                <ul style="margin-left: 20px; margin-top: 8px;">
+                    <li>Prinsip 2:1 untuk anak laki-laki dan perempuan</li>
+                    <li>Anak perempuan tunggal mendapat 1/2</li>
+                    <li>Anak perempuan ≥ 2 orang mendapat 2/3</li>
+                    <li>Prioritas: utang, wasiat, baru waris</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Indikator Asesmen -->
+        <div class="indikator-section">
+            <div class="indikator-title">Indikator Asesmen</div>
+            <div class="indikator-box">
+                Disajikan potongan QS. An-Nisa' ayat 11 tentang ketentuan waris, peserta didik mampu menentukan letak ayat tersebut dalam Al-Qur'an dengan tepat.
+            </div>
+        </div>
+
+        <!-- Rumusan Soal -->
+        <div class="soal-section">
+            <div class="soal-title">Rumusan Soal:</div>
+            <div class="soal-box">
+                <p>Perhatikan potongan ayat berikut:</p>
+                <div class="arab-text">
+                    يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنْثَيَيْنِ
+                </div>
+                <p>Ayat di atas merupakan firman Allah yang menjelaskan tentang ketentuan pembagian waris untuk anak-anak. Ayat tersebut terdapat dalam...</p>
+                
+                <div class="opsi-list">
+                    <div><span class="opsi-label">A.</span> QS. An-Nisa' ayat 176</div>
+                    <div><span class="opsi-label">B.</span> QS. An-Nisa' ayat 12</div>
+                    <div><span class="opsi-label">C.</span> QS. An-Nisa' ayat 11</div>
+                    <div><span class="opsi-label">D.</span> QS. Al-Baqarah ayat 233</div>
+                    <div><span class="opsi-label">E.</span> QS. Al-Maidah ayat 38</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Tanda Tangan -->
+        <div class="footer">
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Kepala Sekolah</div>
+                <br><br><br>
+                <div class="name">Drs. H. Ahmad Fauzi, M.Pd.</div>
+                <div class="nip">NIP. 19680715 199512 1 003</div>
+            </div>
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Guru Mata Pelajaran</div>
+                <br><br><br>
+                <div class="name">Siti Aminah, S.Ag., M.Si.</div>
+                <div class="nip">NIP. 19750312 200501 2 008</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KARTU SOAL 2: Numerasi Mawaris (Perhitungan Bagian Istri) -->
+    <div class="kartu-container page-break">
+        <div class="header">
+            <h1>KARTU SOAL</h1>
+            <h2>PENILAIAN SUMATIF AKHIR TAHUN</h2>
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td class="label">Satuan Pendidikan</td>
+                <td class="content">: SMA NEGERI 1 WIRADESA PEKALONGAN</td>
+                <td class="label">Tahun Pelajaran</td>
+                <td class="content">: 2024/2025</td>
+            </tr>
+            <tr>
+                <td class="label">Mata Pelajaran</td>
+                <td class="content">: Pendidikan Agama Islam dan Budi Pekerti</td>
+                <td class="label">Kelas</td>
+                <td class="content">: XII</td>
+            </tr>
+            <tr>
+                <td class="label">Kurikulum</td>
+                <td class="content">: Kurikulum Merdeka</td>
+                <td class="label">Semester</td>
+                <td class="content">: Gasal</td>
+            </tr>
+        </table>
+
+        <div class="cp-section">
+            <div class="cp-title">Capaian Pembelajaran</div>
+            <div class="cp-box">
+                Menganalisis ketentuan waris dalam QS. An-Nisa' ayat 11, 12, dan 176 serta hadits-hadits terkait, memahami hikmah pembagian waris, serta mampu mempraktikkan perhitungan waris dalam konteks kehidupan sehari-hari dengan adil dan sesuai syariat Islam.
+            </div>
+        </div>
+
+        <table class="soal-table">
+            <tr>
+                <th>Nomor Soal</th>
+                <th>Kunci Jawaban</th>
+                <th>Level Kognitif</th>
+                <th>Bentuk Soal</th>
+            </tr>
+            <tr>
+                <td class="no-col">11</td>
+                <td class="kunci-col">B</td>
+                <td class="level-col">
+                    Level 2<br>
+                    <span class="level-detail">(Aplikasi/Penerapan)</span>
+                </td>
+                <td class="bentuk-col">Pilihan Ganda</td>
+            </tr>
+        </table>
+
+        <div class="materi-section">
+            <div class="materi-title">Materi Pembelajaran</div>
+            <div class="materi-box">
+                <strong>Perhitungan Waris: Bagian Istri (1/8)</strong><br><br>
+                <div>Berdasarkan QS. An-Nisa' ayat 12: <span style="font-family: 'Traditional Arabic';">وَلَهُنَّ الرُّبُعُ مِمَّا تَرَكْتُمْ إِن لَّمْ يَكُن لَّكُمْ وَلَدٌ ۚ فَإِن كَانَ لَكُمْ وَلَدٌ فَلَهُنَّ الثُّمُنُ</span></div>
+                <div><strong>Terjemah:</strong> "Para istri memperoleh seperempat harta yang kamu tinggalkan jika kamu tidak mempunyai anak. Jika kamu mempunyai anak, maka para istri memperoleh seperdelapan dari harta yang kamu tinggalkan."</div>
+                <div class="sub-title">Rumus:</div>
+                <ul style="margin-left: 20px;">
+                    <li>Jika mayit punya anak → Istri = 1/8 × harta</li>
+                    <li>Jika mayit tidak punya anak → Istri = 1/4 × harta</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="indikator-section">
+            <div class="indikator-title">Indikator Asesmen</div>
+            <div class="indikator-box">
+                Disajikan kasus ahli waris yang terdiri dari istri dan anak-anak, peserta didik dapat menghitung bagian istri dengan tepat menggunakan ketentuan QS. An-Nisa' ayat 12.
+            </div>
+        </div>
+
+        <div class="soal-section">
+            <div class="soal-title">Rumusan Soal:</div>
+            <div class="soal-box">
+                <p>Pak Ahmad meninggal dunia. Ahli waris yang ditinggalkan terdiri dari seorang istri dan 2 anak laki-laki. Harta warisan yang ditinggalkan sebesar Rp 240.000.000. Berdasarkan QS. An-Nisa' ayat 12, berapakah bagian yang diperoleh istri?</p>
+                
+                <div class="opsi-list">
+                    <div><span class="opsi-label">A.</span> Rp 20.000.000</div>
+                    <div><span class="opsi-label">B.</span> Rp 30.000.000</div>
+                    <div><span class="opsi-label">C.</span> Rp 40.000.000</div>
+                    <div><span class="opsi-label">D.</span> Rp 60.000.000</div>
+                    <div><span class="opsi-label">E.</span> Rp 80.000.000</div>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #555;">(Petunjuk: Istri mendapat 1/8 karena mayit memiliki anak)</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Kepala Sekolah</div>
+                <br><br><br>
+                <div class="name">Drs. H. Ahmad Fauzi, M.Pd.</div>
+                <div class="nip">NIP. 19680715 199512 1 003</div>
+            </div>
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Guru Mata Pelajaran</div>
+                <br><br><br>
+                <div class="name">Siti Aminah, S.Ag., M.Si.</div>
+                <div class="nip">NIP. 19750312 200501 2 008</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KARTU SOAL 3: HOTS - Kasus dengan 'Aul -->
+    <div class="kartu-container page-break">
+        <div class="header">
+            <h1>KARTU SOAL</h1>
+            <h2>PENILAIAN SUMATIF AKHIR TAHUN</h2>
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td class="label">Satuan Pendidikan</td>
+                <td class="content">: SMA NEGERI 1 WIRADESA PEKALONGAN</td>
+                <td class="label">Tahun Pelajaran</td>
+                <td class="content">: 2024/2025</td>
+            </tr>
+            <tr>
+                <td class="label">Mata Pelajaran</td>
+                <td class="content">: Pendidikan Agama Islam dan Budi Pekerti</td>
+                <td class="label">Kelas</td>
+                <td class="content">: XII</td>
+            </tr>
+            <tr>
+                <td class="label">Kurikulum</td>
+                <td class="content">: Kurikulum Merdeka</td>
+                <td class="label">Semester</td>
+                <td class="content">: Gasal</td>
+            </tr>
+        </table>
+
+        <div class="cp-section">
+            <div class="cp-title">Capaian Pembelajaran</div>
+            <div class="cp-box">
+                Menganalisis ketentuan waris dalam QS. An-Nisa' ayat 11, 12, dan 176 serta hadits-hadits terkait, memahami hikmah pembagian waris, serta mampu mempraktikkan perhitungan waris dalam konteks kehidupan sehari-hari dengan adil dan sesuai syariat Islam.
+            </div>
+        </div>
+
+        <table class="soal-table">
+            <tr>
+                <th>Nomor Soal</th>
+                <th>Kunci Jawaban</th>
+                <th>Level Kognitif</th>
+                <th>Bentuk Soal</th>
+            </tr>
+            <tr>
+                <td class="no-col">22</td>
+                <td class="kunci-col">D</td>
+                <td class="level-col">
+                    Level 3<br>
+                    <span class="level-detail">(Penalaran/HOTS)</span>
+                </td>
+                <td class="bentuk-col">Pilihan Ganda</td>
+            </tr>
+        </table>
+
+        <div class="materi-section">
+            <div class="materi-title">Materi Pembelajaran</div>
+            <div class="materi-box">
+                <strong>'Aul dalam Ilmu Waris</strong><br><br>
+                <p>'Aul adalah metode penyelesaian ketika total bagian ahli waris melebihi harta yang tersedia (total pecahan > 1). Dalam kondisi ini, penyebut (asal masalah) dinaikkan sesuai total pembilang.</p>
+                <div class="sub-title">Contoh Kasus:</div>
+                <p>Ahli waris: suami (1/2 = 3/6), ibu (1/6 = 1/6), 2 saudara perempuan kandung (2/3 = 4/6). Total = 3/6 + 1/6 + 4/6 = 8/6 (>1). Maka di-'aul menjadi 8, sehingga:</p>
+                <ul>
+                    <li>Suami = 3/8 × harta</li>
+                    <li>Ibu = 1/8 × harta</li>
+                    <li>2 saudara perempuan = 4/8 × harta</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="indikator-section">
+            <div class="indikator-title">Indikator Asesmen</div>
+            <div class="indikator-box">
+                Disajikan kasus waris dengan total bagian melebihi harta (terjadi 'aul), peserta didik dapat menghitung bagian salah satu ahli waris setelah proses 'aul dengan tepat.
+            </div>
+        </div>
+
+        <div class="soal-section">
+            <div class="soal-title">Rumusan Soal:</div>
+            <div class="soal-box">
+                <p>Seorang perempuan meninggal dunia dengan meninggalkan ahli waris: suami (mendapat 1/2), ibu (mendapat 1/6), dan 2 saudara perempuan kandung (mendapat 2/3). Jika harta warisan yang ditinggalkan sebesar Rp 420.000.000, berapakah bagian yang diperoleh suami setelah dilakukan 'aul?</p>
+                
+                <div class="opsi-list">
+                    <div><span class="opsi-label">A.</span> Rp 120.000.000</div>
+                    <div><span class="opsi-label">B.</span> Rp 140.000.000</div>
+                    <div><span class="opsi-label">C.</span> Rp 157.500.000</div>
+                    <div><span class="opsi-label">D.</span> Rp 160.000.000</div>
+                    <div><span class="opsi-label">E.</span> Rp 180.000.000</div>
+                </div>
+                
+                <p style="margin-top: 20px;"><strong>Pembahasan:</strong><br>
+                - Suami = 1/2 = 3/6<br>
+                - Ibu = 1/6 = 1/6<br>
+                - 2 saudara perempuan = 2/3 = 4/6<br>
+                - Total = 3/6 + 1/6 + 4/6 = 8/6 → 'aul ke 8<br>
+                - Bagian suami = 3/8 × Rp 420.000.000 = Rp 157.500.000<br>
+                - Jawaban: C</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Kepala Sekolah</div>
+                <br><br><br>
+                <div class="name">Drs. H. Ahmad Fauzi, M.Pd.</div>
+                <div class="nip">NIP. 19680715 199512 1 003</div>
+            </div>
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Guru Mata Pelajaran</div>
+                <br><br><br>
+                <div class="name">Siti Aminah, S.Ag., M.Si.</div>
+                <div class="nip">NIP. 19750312 200501 2 008</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KARTU SOAL 4: Hadits tentang Ashabah -->
+    <div class="kartu-container page-break">
+        <div class="header">
+            <h1>KARTU SOAL</h1>
+            <h2>PENILAIAN SUMATIF AKHIR TAHUN</h2>
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td class="label">Satuan Pendidikan</td>
+                <td class="content">: SMA NEGERI 1 WIRADESA PEKALONGAN</td>
+                <td class="label">Tahun Pelajaran</td>
+                <td class="content">: 2024/2025</td>
+            </tr>
+            <tr>
+                <td class="label">Mata Pelajaran</td>
+                <td class="content">: Pendidikan Agama Islam dan Budi Pekerti</td>
+                <td class="label">Kelas</td>
+                <td class="content">: XII</td>
+            </tr>
+            <tr>
+                <td class="label">Kurikulum</td>
+                <td class="content">: Kurikulum Merdeka</td>
+                <td class="label">Semester</td>
+                <td class="content">: Gasal</td>
+            </tr>
+        </table>
+
+        <div class="cp-section">
+            <div class="cp-title">Capaian Pembelajaran</div>
+            <div class="cp-box">
+                Menganalisis ketentuan waris dalam QS. An-Nisa' ayat 11, 12, dan 176 serta hadits-hadits terkait, memahami hikmah pembagian waris, serta mampu mempraktikkan perhitungan waris dalam konteks kehidupan sehari-hari dengan adil dan sesuai syariat Islam.
+            </div>
+        </div>
+
+        <table class="soal-table">
+            <tr>
+                <th>Nomor Soal</th>
+                <th>Kunci Jawaban</th>
+                <th>Level Kognitif</th>
+                <th>Bentuk Soal</th>
+            </tr>
+            <tr>
+                <td class="no-col">7</td>
+                <td class="kunci-col">B</td>
+                <td class="level-col">
+                    Level 2<br>
+                    <span class="level-detail">(Pemahaman)</span>
+                </td>
+                <td class="bentuk-col">Pilihan Ganda</td>
+            </tr>
+        </table>
+
+        <div class="materi-section">
+            <div class="materi-title">Materi Pembelajaran</div>
+            <div class="materi-box">
+                <strong>Hadits tentang Ashabah</strong><br><br>
+                <div class="hadits-text">
+                    أَلْحِقُوا الْفَرَائِضَ بِأَهْلِهَا فَمَا بَقِيَ فَهُوَ لِأَوْلَى رَجُلٍ ذَكَرٍ
+                </div>
+                <p><strong>Terjemah:</strong> "Berikanlah bagian-bagian waris yang telah ditentukan kepada yang berhak, maka sisa harta setelah itu untuk laki-laki terdekat (ashabah)." (HR. Bukhari)</p>
+                <div class="sub-title">Penjelasan:</div>
+                <p>Ashabah adalah ahli waris yang mendapat sisa harta setelah dzawil furudh (ahli waris yang mendapat bagian tetap) menerima bagiannya. Mereka biasanya adalah kerabat laki-laki terdekat seperti anak laki-laki, cucu laki-laki, ayah, saudara laki-laki, dll.</p>
+            </div>
+        </div>
+
+        <div class="indikator-section">
+            <div class="indikator-title">Indikator Asesmen</div>
+            <div class="indikator-box">
+                Disajikan hadits Rasulullah SAW tentang ashabah, peserta didik dapat menjelaskan prinsip ashabah dalam pembagian waris.
+            </div>
+        </div>
+
+        <div class="soal-section">
+            <div class="soal-title">Rumusan Soal:</div>
+            <div class="soal-box">
+                <p>Rasulullah SAW bersabda:</p>
+                <div class="hadits-text">
+                    أَلْحِقُوا الْفَرَائِضَ بِأَهْلِهَا فَمَا بَقِيَ فَهُوَ لِأَوْلَى رَجُلٍ ذَكَرٍ
+                </div>
+                <p>Hadits di atas menjelaskan tentang prinsip dalam pembagian waris, yaitu...</p>
+                
+                <div class="opsi-list">
+                    <div><span class="opsi-label">A.</span> Semua ahli waris mendapat bagian tetap</div>
+                    <div><span class="opsi-label">B.</span> Ashabah (sisa harta untuk kerabat laki-laki terdekat)</div>
+                    <div><span class="opsi-label">C.</span> Bagian istri setengah dari suami</div>
+                    <div><span class="opsi-label">D.</span> Anak angkat berhak mendapat waris</div>
+                    <div><span class="opsi-label">E.</span> Pembagian waris harus disaksikan hakim</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Kepala Sekolah</div>
+                <br><br><br>
+                <div class="name">Drs. H. Ahmad Fauzi, M.Pd.</div>
+                <div class="nip">NIP. 19680715 199512 1 003</div>
+            </div>
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Guru Mata Pelajaran</div>
+                <br><br><br>
+                <div class="name">Siti Aminah, S.Ag., M.Si.</div>
+                <div class="nip">NIP. 19750312 200501 2 008</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KARTU SOAL 5: Kasus Komprehensif HOTS -->
+    <div class="kartu-container page-break">
+        <div class="header">
+            <h1>KARTU SOAL</h1>
+            <h2>PENILAIAN SUMATIF AKHIR TAHUN</h2>
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td class="label">Satuan Pendidikan</td>
+                <td class="content">: SMA NEGERI 1 WIRADESA PEKALONGAN</td>
+                <td class="label">Tahun Pelajaran</td>
+                <td class="content">: 2024/2025</td>
+            </tr>
+            <tr>
+                <td class="label">Mata Pelajaran</td>
+                <td class="content">: Pendidikan Agama Islam dan Budi Pekerti</td>
+                <td class="label">Kelas</td>
+                <td class="content">: XII</td>
+            </tr>
+            <tr>
+                <td class="label">Kurikulum</td>
+                <td class="content">: Kurikulum Merdeka</td>
+                <td class="label">Semester</td>
+                <td class="content">: Gasal</td>
+            </tr>
+        </table>
+
+        <div class="cp-section">
+            <div class="cp-title">Capaian Pembelajaran</div>
+            <div class="cp-box">
+                Menganalisis ketentuan waris dalam QS. An-Nisa' ayat 11, 12, dan 176 serta hadits-hadits terkait, memahami hikmah pembagian waris, serta mampu mempraktikkan perhitungan waris dalam konteks kehidupan sehari-hari dengan adil dan sesuai syariat Islam.
+            </div>
+        </div>
+
+        <table class="soal-table">
+            <tr>
+                <th>Nomor Soal</th>
+                <th>Kunci Jawaban</th>
+                <th>Level Kognitif</th>
+                <th>Bentuk Soal</th>
+            </tr>
+            <tr>
+                <td class="no-col">30</td>
+                <td class="kunci-col">C</td>
+                <td class="level-col">
+                    Level 3<br>
+                    <span class="level-detail">(Penalaran/HOTS)</span>
+                </td>
+                <td class="bentuk-col">Pilihan Ganda</td>
+            </tr>
+        </table>
+
+        <div class="materi-section">
+            <div class="materi-title">Materi Pembelajaran</div>
+            <div class="materi-box">
+                <strong>Kasus Komprehensif Waris</strong><br><br>
+                <p>Dalam penyelesaian waris, beberapa hal yang harus diperhatikan secara berurutan:</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Biaya perawatan jenazah</strong> - dikeluarkan pertama kali</li>
+                    <li><strong>Utang</strong> - dibayar dari sisa harta</li>
+                    <li><strong>Wasiat</strong> - maksimal 1/3 dari sisa setelah utang</li>
+                    <li><strong>Waris</strong> - dibagikan kepada ahli waris sesuai ketentuan</li>
+                </ol>
+                <p>Konsep yang digunakan: perbandingan 2:1 untuk anak laki-laki dan perempuan, 'aul jika total > 1, radd jika total < 1, dan hijab untuk ahli waris yang terhalang.</p>
+            </div>
+        </div>
+
+        <div class="indikator-section">
+            <div class="indikator-title">Indikator Asesmen</div>
+            <div class="indikator-box">
+                Disajikan kasus komprehensif yang melibatkan harta bersama, utang, wasiat, dan beberapa ahli waris dengan kondisi berbeda, peserta didik dapat menghitung bagian salah satu ahli waris dengan tepat.
+            </div>
+        </div>
+
+        <div class="soal-section">
+            <div class="soal-title">Rumusan Soal:</div>
+            <div class="soal-box">
+                <p>Pak Umar meninggal dunia dengan meninggalkan:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Harta bersama dengan istri: Rp 800.000.000</li>
+                    <li>Harta pribadi: Rp 400.000.000</li>
+                    <li>Utang kepada bank: Rp 150.000.000</li>
+                    <li>Wasiat untuk yayasan pendidikan: Rp 200.000.000</li>
+                </ul>
+                <p>Ahli waris yang ditinggalkan: istri, ibu, ayah, 1 anak laki-laki, dan 2 anak perempuan.</p>
+                <p>Setelah dilakukan perhitungan dengan memperhatikan prioritas utang dan wasiat (maksimal 1/3 sisa harta), berapakah bagian yang diterima oleh <strong>masing-masing anak perempuan</strong>?</p>
+                
+                <div class="opsi-list">
+                    <div><span class="opsi-label">A.</span> Rp 50.000.000</div>
+                    <div><span class="opsi-label">B.</span> Rp 62.500.000</div>
+                    <div><span class="opsi-label">C.</span> Rp 75.000.000</div>
+                    <div><span class="opsi-label">D.</span> Rp 81.250.000</div>
+                    <div><span class="opsi-label">E.</span> Rp 93.750.000</div>
+                </div>
+                
+                <p style="margin-top: 20px; font-size: 13px; color: #666;"><em>Catatan: Soal ini membutuhkan perhitungan bertahap mulai dari harta bersama, utang, wasiat, hingga pembagian ke ahli waris.</em></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Kepala Sekolah</div>
+                <br><br><br>
+                <div class="name">Drs. H. Ahmad Fauzi, M.Pd.</div>
+                <div class="nip">NIP. 19680715 199512 1 003</div>
+            </div>
+            <div class="signature">
+                <div class="role">Mengetahui,</div>
+                <div>Wiradesa, 10 Februari 2026</div>
+                <div>Guru Mata Pelajaran</div>
+                <br><br><br>
+                <div class="name">Siti Aminah, S.Ag., M.Si.</div>
+                <div class="nip">NIP. 19750312 200501 2 008</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
