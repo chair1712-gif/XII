@@ -1,0 +1,638 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KISI-KISI SOAL ASAT PAI KELAS XII - MAWARIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .document-wrapper {
+            max-width: 1400px;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+
+        /* Kop Surat */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px double #000;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .header .school {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Info Table */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border: 1px solid #000;
+        }
+
+        .info-table td {
+            border: 1px solid #000;
+            padding: 10px 15px;
+            font-size: 15px;
+        }
+
+        .info-table td.label {
+            width: 25%;
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .info-table td.content {
+            width: 75%;
+        }
+
+        /* Main Table */
+        .kisi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .kisi-table th {
+            border: 1px solid #000;
+            padding: 12px 8px;
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 13px;
+        }
+
+        .kisi-table td {
+            border: 1px solid #000;
+            padding: 10px 8px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        .kisi-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .no-col {
+            text-align: center;
+            font-weight: bold;
+            width: 5%;
+        }
+
+        .kogitif-col {
+            text-align: center;
+            width: 8%;
+        }
+
+        .bentuk-col {
+            text-align: center;
+            width: 8%;
+        }
+
+        .nomor-col {
+            text-align: center;
+            width: 8%;
+        }
+
+        .quran-text {
+            font-family: 'Traditional Arabic', 'Amiri', serif;
+            font-size: 16px;
+            direction: rtl;
+        }
+
+        .footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .signature {
+            text-align: center;
+            width: 250px;
+        }
+
+        .signature .city {
+            margin-bottom: 80px;
+        }
+
+        .signature .name {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 5px;
+        }
+
+        .signature .nip {
+            font-size: 13px;
+        }
+
+        .page-number {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .document-wrapper {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .kisi-table th {
+                background-color: #2c3e50 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .info-table td.label {
+                background-color: #f0f0f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-wrapper">
+        <!-- Kop Surat -->
+        <div class="header">
+            <h1>KISI-KISI SOAL ASESMEN SUMATIF AKHIR TAHUN (ASAT)</h1>
+            <h2>KELAS XII DAN ASESMEN SUMATIF TENGAH SEMESTER (ASTS) II</h2>
+            <h2>KELAS X, XI</h2>
+            <h3>TAHUN AJARAN 2025/2026</h3>
+            <div class="school">SMA NEGERI 1 WIRADESA</div>
+        </div>
+
+        <!-- Tabel Informasi -->
+        <table class="info-table">
+            <tr>
+                <td class="label">Jenjang Pendidikan</td>
+                <td class="content">SMA</td>
+            </tr>
+            <tr>
+                <td class="label">Alokasi Waktu</td>
+                <td class="content">75 menit</td>
+            </tr>
+            <tr>
+                <td class="label">Mata Pelajaran</td>
+                <td class="content">Pend. Agama Islam & Budi Pekerti / BAB. MAWARIS </td>
+            </tr>
+            <tr>
+                <td class="label">Jumlah Soal</td>
+                <td class="content">30 soal Pilihan Ganda</td>
+            </tr>
+            <tr>
+                <td class="label">Kelas / Fase</td>
+                <td class="content">XII / F</td>
+            </tr>
+            <tr>
+                <td class="label">Bentuk Soal</td>
+                <td class="content">30 Pilihan Ganda</td>
+            </tr>
+        </table>
+
+        <!-- Tabel Kisi-Kisi Utama -->
+        <table class="kisi-table">
+            <thead>
+                <tr>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kemampuan yang Diuji</th>
+                    <th rowspan="2">Lingkup Materi</th>
+                    <th rowspan="2">Materi</th>
+                    <th rowspan="2">Level Kognitif</th>
+                    <th rowspan="2">Indikator Soal</th>
+                    <th colspan="2">Bentuk Soal</th>
+                    <th rowspan="2">Nomor Soal</th>
+                </tr>
+                <tr>
+                    <th>PG</th>
+                    <th>Uraian</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ========== LITERASI AL-QUR'AN (Soal 1-10) ========== -->
+                <tr>
+                    <td class="no-col">1</td>
+                    <td>Menganalisis dalil naqli tentang waris</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>QS. An-Nisa' ayat 11 tentang bagian anak</td>
+                    <td class="kogitif-col">C1</td>
+                    <td>Disajikan potongan QS. An-Nisa' ayat 11, peserta didik dapat menentukan letak ayat tersebut dengan tepat</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">1</td>
+                </tr>
+                <tr>
+                    <td class="no-col">2</td>
+                    <td>Memahami ketentuan waris dalam Al-Qur'an</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>QS. An-Nisa' ayat 11 tentang anak perempuan</td>
+                    <td class="kogitif-col">C1</td>
+                    <td>Disajikan ketentuan waris dalam QS. An-Nisa' ayat 11, peserta didik dapat menentukan bagian anak perempuan lebih dari dua</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">2</td>
+                </tr>
+                <tr>
+                    <td class="no-col">3</td>
+                    <td>Memahami konsep 2:1 dalam waris</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>Prinsip laki-laki dua kali perempuan</td>
+                    <td class="kogitif-col">C2</td>
+                    <td>Disajikan ayat لِلذَّكَرِ مِثْلُ حَظِّ الْأُنْثَيَيْنِ, peserta didik dapat menentukan ahli waris yang dimaksud</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">3</td>
+                </tr>
+                <tr>
+                    <td class="no-col">4</td>
+                    <td>Memahami ketentuan waris suami-istri</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>QS. An-Nisa' ayat 12 tentang suami-istri</td>
+                    <td class="kogitif-col">C2</td>
+                    <td>Disajikan potongan QS. An-Nisa' ayat 12, peserta didik dapat menentukan terjemahan yang tepat tentang bagian istri</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">4</td>
+                </tr>
+                <tr>
+                    <td class="no-col">5</td>
+                    <td>Memahami konsep kalalah</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>QS. An-Nisa' ayat 176 tentang kalalah</td>
+                    <td class="kogitif-col">C2</td>
+                    <td>Disajikan pengertian kalalah, peserta didik dapat menentukan makna kalalah dalam ilmu waris</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">5</td>
+                </tr>
+                <tr>
+                    <td class="no-col">6</td>
+                    <td>Menganalisis prioritas pengeluaran harta waris</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>Utang, wasiat, dan waris</td>
+                    <td class="kogitif-col">C3</td>
+                    <td>Disajikan frasa مِن بَعْدِ وَصِيَّةٍ يُوصِي بِهَا أَوْ دَيْنٍ, peserta didik dapat menentukan urutan prioritas pengeluaran harta mayit</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">6</td>
+                </tr>
+                <tr>
+                    <td class="no-col">7</td>
+                    <td>Memahami hadits tentang ashabah</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>Hadits tentang ashabah</td>
+                    <td class="kogitif-col">C3</td>
+                    <td>Disajikan hadits tentang ashabah, peserta didik dapat menjelaskan prinsip ashabah dalam waris</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">7</td>
+                </tr>
+                <tr>
+                    <td class="no-col">8</td>
+                    <td>Mengaplikasikan ketentuan waris dalam kasus sederhana</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>Kasus: istri, ibu, anak laki-laki</td>
+                    <td class="kogitif-col">C3</td>
+                    <td>Disajikan kasus ahli waris (istri, ibu, anak laki-laki), peserta didik dapat menentukan bagian yang benar</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">8</td>
+                </tr>
+                <tr>
+                    <td class="no-col">9</td>
+                    <td>Menganalisis perubahan bagian ibu</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>Bagian ibu dalam 3 kondisi</td>
+                    <td class="kogitif-col">C4</td>
+                    <td>Disajikan tiga kondisi berbeda, peserta didik dapat menentukan urutan bagian ibu yang benar</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">9</td>
+                </tr>
+                <tr>
+                    <td class="no-col">10</td>
+                    <td>Memahami ayat tentang bagian suami</td>
+                    <td>Al-Qur'an dan Hadits</td>
+                    <td>QS. An-Nisa' ayat 12 tentang suami</td>
+                    <td class="kogitif-col">C4</td>
+                    <td>Disajikan ayat tentang bagian suami, peserta didik dapat menentukan terjemahan yang tepat</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">10</td>
+                </tr>
+
+                <!-- ========== NUMERASI MAWARIS (Soal 11-20) ========== -->
+                <tr>
+                    <td class="no-col">11</td>
+                    <td>Menghitung bagian istri</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Perhitungan bagian istri (1/8)</td>
+                    <td class="kogitif-col">C2</td>
+                    <td>Disajikan kasus dengan ahli waris istri dan anak, peserta didik dapat menghitung bagian istri</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">11</td>
+                </tr>
+                <tr>
+                    <td class="no-col">12</td>
+                    <td>Menghitung sisa untuk anak laki-laki</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Ashabah</td>
+                    <td class="kogitif-col">C2</td>
+                    <td>Disajikan kasus dengan istri dan 2 anak laki, peserta didik dapat menghitung bagian masing-masing anak</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">12</td>
+                </tr>
+                <tr>
+                    <td class="no-col">13</td>
+                    <td>Menerapkan perbandingan 2:1</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Perbandingan anak laki dan perempuan</td>
+                    <td class="kogitif-col">C3</td>
+                    <td>Disajikan kasus 1 anak laki dan 3 anak perempuan, peserta didik dapat menghitung bagian anak laki</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">13</td>
+                </tr>
+                <tr>
+                    <td class="no-col">14</td>
+                    <td>Menghitung dengan metode radd</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Radd untuk anak perempuan tunggal</td>
+                    <td class="kogitif-col">C3</td>
+                    <td>Disajikan kasus suami, ibu, dan 1 anak perempuan, peserta didik dapat menghitung bagian anak dengan radd</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">14</td>
+                </tr>
+                <tr>
+                    <td class="no-col">15</td>
+                    <td>Menentukan asal masalah (KPK)</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Asal masalah dalam waris</td>
+                    <td class="kogitif-col">C4</td>
+                    <td>Disajikan beberapa pecahan bagian ahli waris, peserta didik dapat menentukan KPK (asal masalah)</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">15</td>
+                </tr>
+                <tr>
+                    <td class="no-col">16</td>
+                    <td>Menghitung dengan metode 'aul</td>
+                    <td>Fikih Mawaris</td>
+                    <td>'Aul (kelebihan total bagian)</td>
+                    <td class="kogitif-col">C4</td>
+                    <td>Disajikan kasus dengan total bagian > 1, peserta didik dapat menghitung bagian setelah 'aul</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">16</td>
+                </tr>
+                <tr>
+                    <td class="no-col">17</td>
+                    <td>Memahami hijab (terhalang)</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Hijab dalam waris</td>
+                    <td class="kogitif-col">C4</td>
+                    <td>Disajikan beberapa ahli waris, peserta didik dapat menentukan siapa yang terhijab</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">17</td>
+                </tr>
+                <tr>
+                    <td class="no-col">18</td>
+                    <td>Membandingkan dua kasus waris</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Analisis perbandingan</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan dua kasus berbeda, peserta didik dapat membandingkan total bagian anak</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">18</td>
+                </tr>
+                <tr>
+                    <td class="no-col">19</td>
+                    <td>Menghitung dengan wasiat melebihi 1/3</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Wasiat maksimal 1/3</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan kasus dengan wasiat melebihi 1/3, peserta didik dapat menghitung bagian ahli waris</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">19</td>
+                </tr>
+                <tr>
+                    <td class="no-col">20</td>
+                    <td>Menghitung dengan metode radd</td>
+                    <td>Fikih Mawaris</td>
+                    <td>Radd untuk anak dan ibu</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan kasus hanya anak perempuan dan ibu, peserta didik dapat menghitung bagian ibu dengan radd</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">20</td>
+                </tr>
+
+                <!-- ========== SOAL HOTS (Soal 21-30) ========== -->
+                <tr>
+                    <td class="no-col">21</td>
+                    <td>Menganalisis beberapa pernyataan waris</td>
+                    <td>Analisis Kritis</td>
+                    <td>Kebenaran pernyataan tentang waris</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan beberapa pernyataan tentang bagian ibu, suami, istri, peserta didik dapat menentukan pernyataan yang benar</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">21</td>
+                </tr>
+                <tr>
+                    <td class="no-col">22</td>
+                    <td>Menyelesaikan kasus dengan 'aul</td>
+                    <td>Analisis Kasus</td>
+                    <td>'aul dengan 3 ahli waris</td>
+                    <td class="kogitif-col">C6</td>
+                    <td>Disajikan kasus dengan total bagian > 1, peserta didik dapat menghitung bagian suami setelah 'aul</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">22</td>
+                </tr>
+                <tr>
+                    <td class="no-col">23</td>
+                    <td>Menyelesaikan kasus komprehensif</td>
+                    <td>Analisis Kasus</td>
+                    <td>Kasus dengan harta bersama, utang, wasiat</td>
+                    <td class="kogitif-col">C6</td>
+                    <td>Disajikan kasus lengkap dengan harta bersama, utang, wasiat, dan 5 ahli waris, peserta didik dapat menghitung bagian anak perempuan</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">23</td>
+                </tr>
+                <tr>
+                    <td class="no-col">24</td>
+                    <td>Memahami hikmah ayat waris</td>
+                    <td>Nilai-nilai Islam</td>
+                    <td>Hikmah QS. An-Nisa' 11</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan ayat tentang hikmah waris, peserta didik dapat menentukan hikmah yang tepat</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">24</td>
+                </tr>
+                <tr>
+                    <td class="no-col">25</td>
+                    <td>Memahami hadits larangan wasiat untuk ahli waris</td>
+                    <td>Hadits</td>
+                    <td>Larangan wasiat untuk ahli waris</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan hadits tentang larangan wasiat untuk ahli waris, peserta didik dapat menjelaskan maknanya</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">25</td>
+                </tr>
+                <tr>
+                    <td class="no-col">26</td>
+                    <td>Menentukan asal masalah dengan 'aul</td>
+                    <td>Numerasi Lanjutan</td>
+                    <td>'aul dengan 4 ahli waris</td>
+                    <td class="kogitif-col">C6</td>
+                    <td>Disajikan 4 ahli waris dengan bagian masing-masing, peserta didik dapat menentukan asal masalah setelah 'aul</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">26</td>
+                </tr>
+                <tr>
+                    <td class="no-col">27</td>
+                    <td>Membedakan 'aul dan radd</td>
+                    <td>Konsep Dasar</td>
+                    <td>Perbedaan 'aul dan radd</td>
+                    <td class="kogitif-col">C5</td>
+                    <td>Disajikan dua konsep 'aul dan radd, peserta didik dapat membedakan keduanya</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">27</td>
+                </tr>
+                <tr>
+                    <td class="no-col">28</td>
+                    <td>Menghitung waris untuk saudara (kalalah)</td>
+                    <td>QS. An-Nisa' 176</td>
+                    <td>Waris untuk saudara</td>
+                    <td class="kogitif-col">C6</td>
+                    <td>Disajikan kasus kalalah dengan saudara laki dan perempuan, peserta didik dapat menghitung bagian saudara laki</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">28</td>
+                </tr>
+                <tr>
+                    <td class="no-col">29</td>
+                    <td>Menganalisis prioritas pengeluaran</td>
+                    <td>Manajemen Harta</td>
+                    <td>Urutan pengeluaran harta mayit</td>
+                    <td class="kogitif-col">C6</td>
+                    <td>Disajikan kasus dengan biaya jenazah, utang, wasiat, peserta didik dapat menentukan urutan prioritas</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">29</td>
+                </tr>
+                <tr>
+                    <td class="no-col">30</td>
+                    <td>Menyelesaikan kasus komprehensif akhir</td>
+                    <td>Analisis Kasus</td>
+                    <td>Kasus lengkap dengan 'aul</td>
+                    <td class="kogitif-col">C6</td>
+                    <td>Disajikan kasus lengkap dengan utang, wasiat, 4 ahli waris, peserta didik dapat menghitung bagian anak laki</td>
+                    <td class="bentuk-col">✓</td>
+                    <td class="bentuk-col"></td>
+                    <td class="nomor-col">30</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Keterangan Level Kognitif -->
+        <div style="margin-top: 20px; margin-bottom: 30px; font-size: 13px;">
+            <strong>Keterangan Level Kognitif:</strong><br>
+            C1 (Mengingat) : 2 soal (6,7%)<br>
+            C2 (Memahami) : 5 soal (16,7%)<br>
+            C3 (Mengaplikasi) : 5 soal (16,7%)<br>
+            C4 (Menganalisis) : 6 soal (20%)<br>
+            C5 (Mengevaluasi) : 6 soal (20%)<br>
+            C6 (Mencipta/Memecahkan Masalah Kompleks) : 6 soal (20%)
+        </div>
+
+        <!-- Distribusi Materi -->
+        <div style="margin-bottom: 30px; font-size: 13px;">
+            <strong>Distribusi Materi:</strong><br>
+            - Literasi Al-Qur'an dan Hadits (Soal 1-10) : 10 soal (33,3%)<br>
+            - Numerasi Mawaris (Soal 11-20) : 10 soal (33,3%)<br>
+            - HOTS Analisis Kasus (Soal 21-30) : 10 soal (33,3%)
+        </div>
+
+        <!-- Footer Tanda Tangan -->
+        <div class="footer">
+            <div class="signature">
+                <div>Mengetahui,</div>
+                <div class="city">Wiradesa, 10 Februari 2026</div>
+                <div>Kepala Sekolah</div>
+                <br><br><br>
+                <div class="name">Dra. Heti Puryanti.</div>
+                <div class="nip">NIP. 19680715 199512 1 003</div>
+            </div>
+            <div class="signature">
+                <div>Mengetahui,</div>
+                <div class="city">Wiradesa, 10 Februari 2026</div>
+                <div>Guru Mata Pelajaran</div>
+                <br><br><br>
+                <div class="name">Chairul Umar M,S.Pd.I</div>
+                <div class="nip">NIP. 19750312 200501 2 008</div>
+            </div>
+        </div>
+
+        <div class="page-number">Halaman 1 dari 1</div>
+    </div>
+</body>
+</html>
