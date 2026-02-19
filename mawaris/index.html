@@ -1,0 +1,606 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pembelajaran PAI Kelas XII</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        /* Container Utama */
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Dashboard */
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .dashboard-header h1 {
+            font-size: 42px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .dashboard-header h1 i {
+            color: #667eea;
+            margin-right: 15px;
+        }
+
+        .dashboard-header p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Grid Materi */
+        .materi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Card Materi Utama */
+        .materi-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .materi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+        }
+
+        /* Header Materi dengan Warna Berbeda */
+        .materi-header {
+            padding: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .materi-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+
+        .materi-header.mawaris {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+        }
+
+        .materi-header.akhlak {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+        }
+
+        .materi-header.sejarah {
+            background: linear-gradient(135deg, #16a085, #1abc9c);
+        }
+
+        .materi-header.tafsir {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+        }
+
+        .materi-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .materi-header h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .materi-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .materi-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Body Materi (Card-Card Kecil) */
+        .materi-body {
+            padding: 25px;
+            background: white;
+        }
+
+        .sub-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .sub-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .sub-card:hover {
+            background: white;
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .sub-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .sub-icon.soal {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        .sub-icon.kisi {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+
+        .sub-icon.kartu {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .sub-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .sub-card p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Footer Dashboard */
+        .dashboard-footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .materi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sub-card-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dashboard-header h1 {
+                font-size: 28px;
+            }
+            
+            .header-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .sub-card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animasi Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover:after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header Dashboard -->
+        <div class="dashboard-header">
+            <h1>
+                <i class="fas fa-quran"></i>
+                Dashboard Pembelajaran PAI Kelas XII
+            </h1>
+            <p>Selamat datang di pusat pembelajaran Pendidikan Agama Islam Kelas XII. Akses materi, soal, kisi-kisi, dan kartu soal untuk empat materi utama semester gasal.</p>
+            
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Materi</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Paket Soal</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">120+</span>
+                    <span class="stat-label">Soal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Materi -->
+        <div class="materi-grid">
+            <!-- MATERI 1: MAWARIS (Hukum Waris Islam) -->
+            <div class="materi-card">
+                <div class="materi-header mawaris">
+                    <div class="materi-icon">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <h2>Ilmu Mawaris</h2>
+                    <p>Hukum Waris Islam (Faraidh)</p>
+                    <span class="materi-badge">12 Soal | 3 Paket</span>
+                </div>
+                <div class="materi-body">
+                    <div class="sub-card-grid">
+                        <!-- Soal -->
+                        <a href="https://chair1712-gif.github.io/XII/mawaris/paket1.html" class="sub-card" target="_blank">
+                            <div class="sub-icon soal">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <h3>Soal</h3>
+                            <p>Paket 1 • 30 PG</p>
+                            <small style="color: #3498db;">mawaris/paket1</small>
+                        </a>
+                        <!-- Kisi-kisi -->
+                        <a href="https://chair1712-gif.github.io/XII/mawaris/kisi_paket1.html" class="sub-card" target="_blank">
+                            <div class="sub-icon kisi">
+                                <i class="fas fa-list-ul"></i>
+                            </div>
+                            <h3>Kisi-kisi</h3>
+                            <p>ASAT 2025/2026</p>
+                            <small style="color: #2ecc71;">mawaris/kisi</small>
+                        </a>
+                        <!-- Kartu Soal -->
+                        <a href="https://chair1712-gif.github.io/XII/mawaris/kartusoal.html" class="sub-card" target="_blank">
+                            <div class="sub-icon kartu">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3>Kartu Soal</h3>
+                            <p>5 Kartu Representatif</p>
+                            <small style="color: #e74c3c;">mawaris/kartu</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERI 2: PERNIKAHAN DALAM ISLAM (Munakahat) -->
+            <div class="materi-card">
+                <div class="materi-header akhlak">
+                    <div class="materi-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>Pernikahan Islam</h2>
+                    <p>Munakahat - Hukum Keluarga</p>
+                    <span class="materi-badge">15 Soal | 3 Paket</span>
+                </div>
+                <div class="materi-body">
+                    <div class="sub-card-grid">
+                        <!-- Soal -->
+                        <a href="#" class="sub-card" onclick="alert('Soal Pernikahan akan segera tersedia!')">
+                            <div class="sub-icon soal">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <h3>Soal</h3>
+                            <p>Paket 1 • 30 PG</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                        <!-- Kisi-kisi -->
+                        <a href="#" class="sub-card" onclick="alert('Kisi-kisi Pernikahan akan segera tersedia!')">
+                            <div class="sub-icon kisi">
+                                <i class="fas fa-list-ul"></i>
+                            </div>
+                            <h3>Kisi-kisi</h3>
+                            <p>ASAT 2025/2026</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                        <!-- Kartu Soal -->
+                        <a href="#" class="sub-card" onclick="alert('Kartu Soal Pernikahan akan segera tersedia!')">
+                            <div class="sub-icon kartu">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3>Kartu Soal</h3>
+                            <p>5 Kartu Soal</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERI 3: SEJARAH PERADABAN ISLAM -->
+            <div class="materi-card">
+                <div class="materi-header sejarah">
+                    <div class="materi-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h2>Sejarah Islam</h2>
+                    <p>Peradaban Islam Abad Pertengahan</p>
+                    <span class="materi-badge">18 Soal | 3 Paket</span>
+                </div>
+                <div class="materi-body">
+                    <div class="sub-card-grid">
+                        <!-- Soal -->
+                        <a href="#" class="sub-card" onclick="alert('Soal Sejarah Islam akan segera tersedia!')">
+                            <div class="sub-icon soal">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <h3>Soal</h3>
+                            <p>Paket 1 • 30 PG</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                        <!-- Kisi-kisi -->
+                        <a href="#" class="sub-card" onclick="alert('Kisi-kisi Sejarah akan segera tersedia!')">
+                            <div class="sub-icon kisi">
+                                <i class="fas fa-list-ul"></i>
+                            </div>
+                            <h3>Kisi-kisi</h3>
+                            <p>ASAT 2025/2026</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                        <!-- Kartu Soal -->
+                        <a href="#" class="sub-card" onclick="alert('Kartu Soal Sejarah akan segera tersedia!')">
+                            <div class="sub-icon kartu">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3>Kartu Soal</h3>
+                            <p>5 Kartu Soal</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERI 4: TAFSIR AYAT-AYAT EKONOMI -->
+            <div class="materi-card">
+                <div class="materi-header tafsir">
+                    <div class="materi-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h2>Ekonomi Islam</h2>
+                    <p>Tafsir Ayat-Ayat Ekonomi</p>
+                    <span class="materi-badge">15 Soal | 3 Paket</span>
+                </div>
+                <div class="materi-body">
+                    <div class="sub-card-grid">
+                        <!-- Soal -->
+                        <a href="#" class="sub-card" onclick="alert('Soal Ekonomi Islam akan segera tersedia!')">
+                            <div class="sub-icon soal">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <h3>Soal</h3>
+                            <p>Paket 1 • 30 PG</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                        <!-- Kisi-kisi -->
+                        <a href="#" class="sub-card" onclick="alert('Kisi-kisi Ekonomi Islam akan segera tersedia!')">
+                            <div class="sub-icon kisi">
+                                <i class="fas fa-list-ul"></i>
+                            </div>
+                            <h3>Kisi-kisi</h3>
+                            <p>ASAT 2025/2026</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                        <!-- Kartu Soal -->
+                        <a href="#" class="sub-card" onclick="alert('Kartu Soal Ekonomi Islam akan segera tersedia!')">
+                            <div class="sub-icon kartu">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3>Kartu Soal</h3>
+                            <p>5 Kartu Soal</p>
+                            <small style="color: #666;">Coming Soon</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informasi Tambahan -->
+        <div style="background: rgba(255,255,255,0.1); border-radius: 20px; padding: 25px; margin-top: 20px; color: white;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <i class="fas fa-info-circle" style="font-size: 24px;"></i>
+                <h3 style="font-weight: 600;">Petunjuk Penggunaan Dashboard</h3>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-1-circle" style="font-size: 20px;"></i>
+                    <span>Klik card <strong>Soal</strong> untuk mengerjakan latihan soal</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-2-circle" style="font-size: 20px;"></i>
+                    <span>Klik card <strong>Kisi-kisi</strong> untuk melihat distribusi soal</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-3-circle" style="font-size: 20px;"></i>
+                    <span>Klik card <strong>Kartu Soal</strong> untuk melihat detail setiap butir soal</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-4-circle" style="font-size: 20px;"></i>
+                    <span>Materi Mawaris sudah aktif, lainnya dalam pengembangan</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="dashboard-footer">
+            <p>© 2026 SMA Negeri 1 Wiradesa - Guru PAI: Siti Aminah, S.Ag., M.Si.</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-envelope"></i> Email</a>
+                <a href="#"><i class="fab fa-whatsapp"></i> Kontak</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll untuk link
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Konfirmasi untuk link yang belum tersedia
+        function confirmComingSoon(e) {
+            if(this.getAttribute('href') === '#') {
+                e.preventDefault();
+                if(confirm('Materi ini sedang dalam pengembangan. Ingin mencoba materi Mawaris yang sudah tersedia?')) {
+                    window.location.href = 'https://chair1712-gif.github.io/XII/mawaris/paket1.html';
+                }
+            }
+        }
+
+        document.querySelectorAll('.sub-card[href="#"]').forEach(link => {
+            link.addEventListener('click', confirmComingSoon);
+        });
+
+        // Animasi loading simulasi
+        function simulateLoading(link) {
+            const originalText = link.innerHTML;
+            link.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                link.innerHTML = originalText;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
